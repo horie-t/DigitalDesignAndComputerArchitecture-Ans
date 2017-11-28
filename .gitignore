@@ -4,5 +4,11 @@ vivado*.log
 webtalk.jou
 webtalk.log
 
+# Vivado project files
+*.cache/
+*.hw/
+*.runs/
+*.xpr
+
 # Emacs backup file
 *~
