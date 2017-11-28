@@ -1,2 +1,6 @@
+# Vivado log files
 vivado*.jou
 vivado*.log
+
+# Emacs backup file
+*~
