@@ -3,6 +3,7 @@ vivado*.jou
 vivado*.log
 webtalk.jou
 webtalk.log
+vivado_pid*.str
 
 # Vivado project files
 *.cache/
