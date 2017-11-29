@@ -1,6 +1,8 @@
 # Vivado log files
 vivado*.jou
 vivado*.log
+webtalk.jou
+webtalk.log
 
 # Emacs backup file
 *~
