@@ -70,13 +70,10 @@ module eliminateChatter(input logic clk,
     * (15'h7FFF(32767)までカウント。100MHzで動かすと約32msで一周する)
     */
    logic [14:0] count;
-   logic 	enable;
+   logic 	enable = (count == 15'h7FFF);
    always_ff @(posedge clk, posedge reset)
-     if (reset) count = 14'b0;
-     else count = count + 1;
-
-   always_comb
-     enable = (count == 15'h7FFF);
+     if (reset) count <= 15'h0;
+     else count <= count + 15'h1;
 
    logic 	ff1, ff2;
    always_ff @(posedge clk, posedge reset)
@@ -93,7 +90,9 @@ module eliminateChatter(input logic clk,
 
    // ff1 & ff2で立ち上がりを検出し、
    // enableとの論理和で1クロック分の信号になる。
-   always_comb
-     y = ff1 & ~ff2 & enable;
+   logic tmp = ff1 & ~ff2 & enable;
+   always_ff @(posedge clk, posedge reset)
+     if (reset) y <= 1'b0;
+     else y <= tmp;
 
 endmodule // eliminateChatter
