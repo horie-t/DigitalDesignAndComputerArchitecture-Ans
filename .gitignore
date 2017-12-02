@@ -9,6 +9,7 @@ vivado_pid*.str
 *.cache/
 *.hw/
 *.runs/
+*.sim/
 *.xpr
 
 # Emacs backup file
