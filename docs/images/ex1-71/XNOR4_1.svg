@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
-   id="XNOR4_1" width="100%" height="100%"  viewBox="-6 -6 582 198">
+   id="XNOR4_1" width="100%" height="100%"  viewBox="-6 -6 610 198">
 <desc>
 XCircuit Version 3.8
 File "XNOR4_1" Page 1
@@ -29,6 +29,9 @@ File "XNOR4_1" Page 1
 </text></g>
 <g transform="matrix(   1    0   -0    1 576  96)" fill="#000000" >
 <text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 800  64)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0"></tspan>
 </text></g>
 </g>
 </svg>
