@@ -1,9 +1,9 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: XOR3_1.ps
 %%Creator: XCircuit v3.8 rev78
-%%CreationDate: Mon Dec  4 17:55:29 2017
+%%CreationDate: Tue Dec  5 08:40:10 2017
 %%Pages: 1
-%%BoundingBox: 68 68 290 148
+%%BoundingBox: 68 68 290 157
 %%DocumentNeededResources: font Helvetica Times-Roman 
 %%EndComments
 %%BeginProlog
@@ -176,10 +176,9 @@
 
 %%BeginSetup
 
-/digital::xnor {
+/digital::xor {
 % trivial
 begingate
-1 1.000 72 0 8 0.000 360.000 xcarc
 1 1.000 -19 -48 96 30.000 90.000 xcarc
 1 1.000 -19 48 96 270.000 330.000 xcarc
 1 1.000 -128 0 80 -37.000 37.000 xcarc
@@ -187,7 +186,7 @@ begingate
 1 1.000 -48 48 -19 48 2 polygon
 1 1.000 -48 -48 -19 -48 2 polygon
 1.000 0.000 0.000 scb
-(Out) {/Times-Roman cf} 2 4 0 1.000 80 0 pinlabel
+(Out) {/Times-Roman cf} 2 4 0 1.000 64 0 pinlabel
 (In.1) {/Times-Roman cf} 2 7 0 1.000 -56 32 pinlabel
 (In.2) {/Times-Roman cf} 2 7 0 1.000 -56 -32 pinlabel
 endgate
@@ -200,9 +199,8 @@ endgate
 %%PageOrientation: Portrait
 /pgsave save def bop
 1.0000 inchscale
-2.6000 setlinewidth 1248 -368 translate
+2.6000 setlinewidth 1248 -356 translate
 
-2.000 0 -768 656 digital::xnor
 1 2.000 -992 656 -864 656 2 polygon
 1 2.000 -992 720 -880 720 2 polygon
 1 2.000 -992 592 -880 592 2 polygon
@@ -211,6 +209,7 @@ endgate
 (C) {/Helvetica cf} 2 16 0 1.000 -1056 576 label
 1 2.000 -608 656 -512 656 2 polygon
 (Y) {/Helvetica cf} 2 16 0 1.000 -512 640 label
+2.250 0 -752 656 digital::xor
 pgsave restore showpage
 
 %%Trailer
