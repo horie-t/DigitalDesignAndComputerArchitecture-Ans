@@ -1,0 +1,8 @@
+Y &=& \bar{A}\bar{B} + \bar{A}B\bar{C} + \overline{(A + \bar{C})}\\
+&=& \bar{A}\bar{B} + \bar{A}B\bar{C} + \bar{A}C\\
+&=& \bar{A}(\bar{B} + B\bar{C} + C)\\
+&=& \bar{A}(\bar{B}C + \bar{B}\bar{C} + B\bar{C} + C)\\
+&=& \bar{A}((\bar{B}C + C) + (\bar{B}\bar{C} + B\bar{C}))\\
+&=& \bar{A}((\bar{B} + 1)C + (B + \bar{B})\bar{C})\\
+&=& \bar{A}(C + \bar{C})\\
+&=& \bar{A}
