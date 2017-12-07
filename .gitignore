@@ -15,3 +15,8 @@ vivado_pid*.str
 
 # Emacs backup file
 *~
+
+# Tex equation file
+*.aux
+*.dvi
+*.log
