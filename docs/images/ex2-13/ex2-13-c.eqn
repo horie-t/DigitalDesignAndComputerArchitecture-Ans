@@ -1,0 +1,12 @@
+Y &=& \bar{A}\bar{B}\bar{C}\bar{D} + A\bar{B}\bar{C} + A\bar{B}C\bar{D} + ABD + \bar{A}\bar{B}C\bar{D} + B\bar{C}D + \bar{A}\\
+&=& \bar{A}(\bar{B}\bar{C}\bar{C} + \bar{B}C\bar{D} + 1) + A(\bar{B}\bar{C} + \bar{B}C\bar{D} + BD) + B\bar{C}D\\
+&=& \bar{A} + A(\bar{B}\bar{C} + \bar{B}C\bar{D} + BD) + B\bar{C}D\\
+&=& \bar{A} + \bar{A}(\bar{B}\bar{C} + \bar{B}C\bar{D} + BD) + A(\bar{B}\bar{C} + \bar{B}C\bar{D} + BD) + B\bar{C}D\\
+&=& \bar{A} + \bar{B}\bar{C} + \bar{B}C\bar{D} + BD + B\bar{C}D\\
+&=& \bar{A} + \bar{B}\bar{C} + \bar{B}\bar{C}D + \bar{B}\bar{C}\bar{D} + \bar{B}C\bar{D} + BD + B\bar{C}D\\
+&=& \bar{A} + \bar{B}\bar{C} + (\bar{B}\bar{C}\bar{D} + \bar{B}C\bar{D}) + BD + (\bar{B}\bar{C}D + B\bar{C}D)\\
+&=& \bar{A} + \bar{B}\bar{C} + \bar{B}\bar{D} + BD + \bar{C}D\\
+&=& \bar{A} + \bar{B}\bar{C}D + \bar{B}\bar{C}\bar{D} + \bar{B}\bar{D} + BD + \bar{C}D\\
+&=& \bar{A} + (\bar{B}\bar{C}\bar{D} + \bar{B}\bar{D}) + BD + (\bar{B}\bar{C}D + \bar{C}D)\\
+&=& \bar{A} + \bar{B}\bar{D} + BD + \bar{C}D\\
+&=& \bar{A} + BD + \bar{B}\bar{D} + \bar{C}D
