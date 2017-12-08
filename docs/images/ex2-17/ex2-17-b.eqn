@@ -1,0 +1,5 @@
+Y &=& \overline{(A + \bar{A}B + \bar{A}\bar{B})} + \overline{(A  + \bar{B})}\\
+&=& \overline{(A + \bar{A}(B + \bar{B}))} + \overline{(A  + \bar{B})}\\
+&=& \overline{(A + \bar{A})} + \overline{(A  + \bar{B})}\\
+&=& \overline{(A  + \bar{B})}\\
+&=& \bar{A}B

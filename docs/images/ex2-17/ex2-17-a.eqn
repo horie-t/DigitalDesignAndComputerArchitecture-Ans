@@ -1,0 +1,5 @@
+Y &=& BC + \bar{A}\bar{B}\bar{C} + B\bar{C}\\
+&=& BC + B\bar{C} + \bar{A}\bar{B}\bar{C}\\
+&=& B + \bar{A}\bar{B}\bar{C}\\
+&=& B + \bar{A}B\bar{C} + \bar{A}\bar{B}\bar{C}\\
+&=& B + \bar{A}\bar{C}
