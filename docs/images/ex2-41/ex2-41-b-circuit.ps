@@ -1,9 +1,9 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%Title: ex2-41-b-circuit
+%%Title: ex2-41-b-circuit.ps
 %%Creator: XCircuit v3.8 rev78
-%%CreationDate: Tue Dec 12 11:59:04 2017
+%%CreationDate: Tue Dec 12 12:01:46 2017
 %%Pages: 1
-%%BoundingBox: 68 68 278 217
+%%BoundingBox: 68 68 278 252
 %%DocumentNeededResources: font Helvetica Times-Roman 
 %%EndComments
 %%BeginProlog
@@ -189,14 +189,26 @@ begingate
 endgate
 } def
 
+/analog::gnd {
+% trivial
+begingate
+1 1.000 0 0 0 -32 2 polygon
+1 1.000 -32 -32 32 -32 2 polygon
+1 1.000 -18 -46 18 -46 2 polygon
+1 1.000 -4 -60 4 -60 2 polygon
+0.933 0.604 0.000 scb
+(GND) {/Times-Roman cf} 2 1 0 1.000 0 0 pinglobal
+endgate
+} def
+
 
 %%EndSetup
 
-%%Page: 1 1
+%%Page: ex2-41-b-circuit 1
 %%PageOrientation: Portrait
 /pgsave save def bop
 1.0000 inchscale
-2.6000 setlinewidth 544 352 translate
+2.6000 setlinewidth 544 444 translate
 
 (00) {/Helvetica cf} 2 16 0 1.000 0 64 label
 (01) {/Helvetica cf} 2 16 0 1.000 0 0 label
@@ -213,6 +225,10 @@ endgate
 (C) {/Helvetica cf} 2 16 0 1.000 -352 -128 label
 1 1.000 64 -16 160 -16 2 polygon
 (Y) {/Helvetica cf} 2 16 0 1.000 160 -32 label
+1.000 0 -64 -192 analog::gnd
+1 1.000 0 16 -64 16 2 polygon
+1 1.000 -64 16 -64 -192 2 polygon
+1 1.000 0 -48 -64 -48 2 polygon
 pgsave restore showpage
 
 %%Trailer

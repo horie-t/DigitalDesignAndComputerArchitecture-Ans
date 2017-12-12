@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
-   id="ex2-41-b-circuit" width="100%" height="100%"  viewBox="-6 -6 546 384">
+   id="ex2-41-b-circuit" width="100%" height="100%"  viewBox="-6 -6 546 476">
 <desc>
 XCircuit Version 3.8
-File "ex2-41-b-circuit" Page 1
+File "ex2-41-b-circuit.ps" Page 1
 </desc>
 <g stroke="black">
 <g transform="matrix(   1    0   -0    1 352 154)" fill="#000000" >
@@ -39,5 +39,12 @@ File "ex2-41-b-circuit" Page 1
 <g transform="matrix(   1    0   -0    1 512 250)" fill="#000000" >
 <text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y</tspan>
 </text></g>
+<path d="M288,410 L288,442 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M256,442 L320,442 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M270,456 L306,456 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M284,470 L292,470 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M352,202 L288,202 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M288,202 L288,410 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M352,266 L288,266 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
 </g>
 </svg>
