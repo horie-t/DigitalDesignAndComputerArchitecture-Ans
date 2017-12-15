@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>170</x>
+      <y>70</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>240</x>
+      <y>150</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>S0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>470</x>
+      <y>150</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>S1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>70</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>160</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+0,X/0</panel_attributes>
+    <additional_attributes>100.0;30.0;100.0;60.0;10.0;60.0;10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>100</y>
+      <w>140</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+0,X/1</panel_attributes>
+    <additional_attributes>50.0;70.0;90.0;70.0;90.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>110</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+1,0/0
+1,1/1</panel_attributes>
+    <additional_attributes>10.0;40.0;50.0;20.0;140.0;20.0;180.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>180</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+0,0/0
+0,1/1</panel_attributes>
+    <additional_attributes>180.0;10.0;140.0;30.0;40.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>360</x>
+      <y>60</y>
+      <w>81</w>
+      <h>41</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+
+Format
+A,B/Y</panel_attributes>
+    <additional_attributes/>
+    <custom_code>//Modify the code below to define the element's behavior.
+//
+//Example:  Change the line
+//  y += printCenter(textline,y);
+//to
+//  y += 2*printCenter(textline,y);
+//and observe the element preview.
+
+int y=textHeight();
+
+drawRectangle(0,0,width,height);
+
+for(String textline : textlines) {
+	y += printCenter(textline,y);
+}</custom_code>
+  </element>
+</diagram>
