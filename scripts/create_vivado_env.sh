@@ -1,18 +1,18 @@
 #!/bin/bash
 
 function usage() {
-    echo <<EOF
+    cat <<EOF
 Usage:
     create_vivado_env.sh <prj_name> <dir_name> <part_name>
 Example:
      create_vivado_dev.sh 4-0_LED_Lighting 4-0_LED_Lighting xc7a100tcsg324-1
 
 This create directory and Vivado project as following.
-  +- <dir_name>\
-     +- srcs\
-     |  +- constrs\
-     |  +- sources\
-     +- vivado_prj\
+  +- <dir_name>/
+     +- srcs/
+     |  +- constrs/
+     |  +- sources/
+     +- vivado_prj/
         +- <prj_name>.xpr
 EOF
 }
