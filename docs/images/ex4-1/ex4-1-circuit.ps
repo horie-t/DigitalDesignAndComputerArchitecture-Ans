@@ -1,9 +1,9 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: ex4-1-circuit
 %%Creator: XCircuit v3.8 rev78
-%%CreationDate: Sun Dec 17 11:02:32 2017
+%%CreationDate: Tue Dec 19 10:42:42 2017
 %%Pages: 1
-%%BoundingBox: 68 68 634 625
+%%BoundingBox: 68 68 386 196
 %%DocumentNeededResources: font Helvetica Times-Roman 
 %%EndComments
 %%BeginProlog
@@ -176,28 +176,20 @@
 
 %%BeginSetup
 
-/digital::and {
+/digital::xnor {
 % trivial
 begingate
-1 1.000 0 -48 -64 -48 -64 48 0 48 4 polygon
-1 1.000 0 0 48 -90.000 90.000 xcarc
+1 1.000 72 0 8 0.000 360.000 xcarc
+1 1.000 -19 -48 96 30.000 90.000 xcarc
+1 1.000 -19 48 96 270.000 330.000 xcarc
+1 1.000 -128 0 80 -37.000 37.000 xcarc
+1 1.000 -112 0 80 -37.000 37.000 xcarc
+1 1.000 -48 48 -19 48 2 polygon
+1 1.000 -48 -48 -19 -48 2 polygon
 1.000 0.000 0.000 scb
-(Out) {/Times-Roman cf} 2 4 0 1.000 48 0 pinlabel
-(In.1) {/Times-Roman cf} 2 7 0 1.000 -64 32 pinlabel
-(In.2) {/Times-Roman cf} 2 7 0 1.000 -64 -32 pinlabel
-endgate
-} def
-
-/digital::invert {
-% trivial
-begingate
-0 1.000 -32 -40 -32 40 40 0 3 polygon
-1 1.000 48 0 8 0.000 360.000 xcarc
-1 1.000 -32 0 -48 0 2 polygon
-1 1.000 56 0 64 0 2 polygon
-1.000 0.000 0.000 scb
-(Out) {/Times-Roman cf} 2 4 0 1.000 64 0 pinlabel
-(In) {/Times-Roman cf} 2 7 0 1.000 -48 0 pinlabel
+(Out) {/Times-Roman cf} 2 4 0 1.000 80 0 pinlabel
+(In.1) {/Times-Roman cf} 2 7 0 1.000 -56 32 pinlabel
+(In.2) {/Times-Roman cf} 2 7 0 1.000 -56 -32 pinlabel
 endgate
 } def
 
@@ -216,6 +208,18 @@ begingate
 endgate
 } def
 
+/digital::and {
+% trivial
+begingate
+1 1.000 0 -48 -64 -48 -64 48 0 48 4 polygon
+1 1.000 0 0 48 -90.000 90.000 xcarc
+1.000 0.000 0.000 scb
+(Out) {/Times-Roman cf} 2 4 0 1.000 48 0 pinlabel
+(In.1) {/Times-Roman cf} 2 7 0 1.000 -64 32 pinlabel
+(In.2) {/Times-Roman cf} 2 7 0 1.000 -64 -32 pinlabel
+endgate
+} def
+
 
 %%EndSetup
 
@@ -223,57 +227,24 @@ endgate
 %%PageOrientation: Portrait
 /pgsave save def bop
 1.0000 inchscale
-2.6000 setlinewidth 880 960 translate
+2.6000 setlinewidth 480 352 translate
 
-1.000 0 64 -16 digital::and
-1.000 0 64 144 digital::and
-1.000 0 64 304 digital::and
-1.000 0 64 -176 digital::and
-1.000 0 64 -336 digital::and
-1.000 90 -128 496 digital::invert
-1 1.000 -128 432 -128 -480 2 polygon
-1 1.000 -224 672 -224 -480 2 polygon
-1 1.000 -128 544 -128 576 -224 576 3 polygon
-1.000 90 -352 496 digital::invert
-1 1.000 -448 672 -448 -480 2 polygon
-1 1.000 -352 544 -352 576 -448 576 3 polygon
-1 1.000 -352 432 -352 -480 2 polygon
-1.000 90 -576 496 digital::invert
-1 1.000 -672 672 -672 -480 2 polygon
-1 1.000 -576 544 -576 576 -672 576 3 polygon
-1 1.000 -576 432 -576 -480 2 polygon
-1 1.000 0 336 -672 336 2 polygon
-1 1.000 0 304 -448 304 2 polygon
-1 1.000 0 272 -224 272 2 polygon
-1 1.000 0 176 -672 176 2 polygon
-1 1.000 0 144 -448 144 2 polygon
-1 1.000 0 112 -128 112 2 polygon
-1 1.000 0 16 -672 16 2 polygon
-1 1.000 0 -16 -352 -16 2 polygon
-1 1.000 0 -48 -224 -48 2 polygon
-1 1.000 0 -160 -672 -160 2 polygon
-1 1.000 0 -192 -448 -192 2 polygon
-1 1.000 0 -320 -576 -320 2 polygon
-1 1.000 0 -352 -352 -352 2 polygon
-1 1.000 112 304 800 304 2 polygon
-1 1.000 112 144 800 144 2 polygon
-1 1.000 112 -16 800 -16 2 polygon
-1 1.000 112 -176 800 -176 2 polygon
-1 1.000 112 -336 800 -336 2 polygon
-1.000 90 240 -560 digital::or
-1.000 90 432 -560 digital::or
-1 1.000 208 -528 208 304 2 polygon
-1 1.000 240 -528 240 144 2 polygon
-1 1.000 272 -512 272 -16 2 polygon
-1 1.000 416 -528 416 -176 2 polygon
-1 1.000 448 -528 448 -336 2 polygon
-1 1.000 240 -624 240 -736 2 polygon
-1 1.000 432 -624 432 -736 2 polygon
-(A) {/Helvetica cf} 2 16 0 1.000 -688 672 label
-(B) {/Helvetica cf} 2 16 0 1.000 -464 672 label
-(C) {/Helvetica cf} 2 16 0 1.000 -240 672 label
-(Y) {/Helvetica cf} 2 16 0 1.000 224 -768 label
-(Z) {/Helvetica cf} 2 16 0 1.000 416 -768 label
+1.000 0 64 -112 digital::xnor
+1.000 0 48 48 digital::or
+1.000 0 352 112 digital::and
+1 1.000 288 128 -256 128 2 polygon
+1 1.000 16 64 -256 64 2 polygon
+1 1.000 16 32 -256 32 2 polygon
+1 1.000 16 -96 -96 -96 -96 128 3 polygon
+1 1.000 -128 64 -128 -128 16 -128 3 polygon
+1 1.000 112 48 192 48 192 96 288 96 4 polygon
+1 1.000 400 112 512 112 2 polygon
+1 1.000 144 -112 512 -112 2 polygon
+(A) {/Helvetica cf} 2 16 0 1.000 -288 112 label
+(B) {/Helvetica cf} 2 16 0 1.000 -288 64 label
+(C) {/Helvetica cf} 2 16 0 1.000 -288 16 label
+(Y) {/Helvetica cf} 2 16 0 1.000 512 96 label
+(Z) {/Helvetica cf} 2 16 0 1.000 512 -128 label
 pgsave restore showpage
 
 %%Trailer

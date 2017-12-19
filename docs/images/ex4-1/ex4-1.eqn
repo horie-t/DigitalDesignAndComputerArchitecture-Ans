@@ -1,4 +1,8 @@
 Y &=& ABC + AB\bar{C} + A\bar{B}C\\
 &=& AB + A\bar{B}C\\
 &=& AB + ABC + A\bar{B}C\\
-&=& AB + AC
+&=& AB + AC\\
+&=& A(B + C)\\
+\\
+Z &=& AB + \bar{A}\bar{B}\\
+&=& \overline{(A \oplus B)}
