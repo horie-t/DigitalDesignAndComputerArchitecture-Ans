@@ -1,0 +1,483 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: ex5-5-PrefixNetwork
+%%Creator: XCircuit v3.8 rev78
+%%CreationDate: Fri Dec 22 15:33:38 2017
+%%Pages: 1
+%%BoundingBox: 68 68 11806 412
+%%DocumentNeededResources: font Helvetica 
+%%EndComments
+%%BeginProlog
+%
+%  PostScript prolog for output from xcircuit
+%  Version: 3.8
+%
+%  Electrical circuit (and otherwise general) drawing program
+%
+%  Written by Tim Edwards 8/5/93--11/1/10  (tim.edwards@multigig.com)
+%  The Johns Hopkins University (1993-2004)
+%  MultiGiG, Inc. (2004-2012)
+%
+%%BeginResource: procset XCIRCproc 3.8 0
+%
+% supporting definitions --- these are the primary xcircuit types.
+
+/XCIRCsave save def
+/topmat matrix currentmatrix def
+
+/fontslant { /slant exch def [1 0 slant 1 0 0] 
+    exch findfont exch makefont dup length dict /ndict exch def
+    { 1 index /FID ne { ndict 3 1 roll put } { pop pop } ifelse } forall
+    ndict definefont pop} def
+/ul { dup type /stringtype eq showflag 1 eq and { gsave 
+   currentpoint topmat setmatrix 0 0 moveto 2 index stringwidth pop (_)
+   false charpath flattenpath pathbbox grestore exch pop 1 index
+   sub setlinewidth exch pop currentpoint 3 -1 roll add moveto 0
+   rlineto stroke moveto } if } def
+/ol { dup type /stringtype eq showflag 1 eq and { gsave gsave
+   currentpoint topmat setmatrix 2 index stringwidth pop 3 index
+   true charpath flattenpath pathbbox grestore exch pop
+   exch pop topmat setmatrix (_) true charpath pathbbox grestore
+   exch pop 1 index sub setlinewidth exch pop currentpoint
+   exch 4 1 roll exch sub add moveto pop 0 rlineto stroke
+   moveto } if } def
+/stW { gsave currentpoint newpath moveto true charpath flattenpath
+	pathbbox pop exch pop sub grestore } def
+/Ts {mark Tabs aload pop counttomark 1 add array astore /Tabs exch def Tabs
+	0 currentpoint pop put} def
+/Tbn {mark Tabs aload pop counttomark dup 2 add 1 roll cleartomark 1 sub} def
+/Tb { 0 1 Tbn {Tabs exch get dup currentpoint pop lt
+	{currentpoint exch pop moveto exit} {pop} ifelse } for } def
+/Tf { Tbn -1 0 {Tabs exch get dup currentpoint pop gt
+	{currentpoint exch pop moveto exit} {pop} ifelse } for } def
+/qS { (aa) stW (a a) stW sub 4 div 0 Kn } def
+/hS { qS qS } def
+/pspc 0 def
+/cf0 { scalefont setfont } bind def
+/Kn { dup kY add /kY exch def rmoveto } bind def
+/ss { /fscale fscale 0.67 mul def currentfont 0.67 cf0 0 fscale0 fscale mul
+	0.33 mul neg Kn} def
+/Ss { /fscale fscale 0.67 mul def currentfont 0.67 cf0 0 fscale0 fscale mul
+	0.67 mul Kn } def
+/ns { 0 kY neg Kn /kY 0 def /fscale 1.0 def xfont0 1.0 cf0 } def
+/MR { /twidth exch def } def
+/CR { ns 0 /Bline Bline fscale0 neg add def Bline moveto } def
+/cf { dup type /realtype ne {1.0} if exch findfont exch kY 0 eq
+	{ 40 mul dup /fscale0 exch def cf0 /xfont0 currentfont def}
+	{fscale0 mul fscale mul cf0} ifelse } def
+/ctmk { counttomark dup 2 add -1 roll pop } bind def
+/label { gsave translate 0 0 moveto dup scale neg
+	/rotval exch def /twidth 100000 def /just exch def just 384 and
+	0 gt {/mshow {pop} def} {/mshow {show} def} ifelse just 16 and 0
+	gt {gsave rotval rotate 0 1 dtransform gsave pagemat setmatrix
+	idtransform exch grestore 1 0 dtransform gsave pagemat setmatrix
+	idtransform exch grestore dup abs 1e-9 lt {pop mul 0 gt} {3 1 roll
+	pop pop 0 lt} ifelse grestore {-1 /rotval rotval neg def /just just
+	dup 3 and 1 ne {3 xor} if def} {1} ifelse exch -1e-9 lt {-1 /rotval
+	rotval neg def /just just dup 12 and 4 ne {12 xor} if def} {1}
+	ifelse scale } if /showflag 0 def /fspc pspc def /Bline 0 def /Tabs
+	0 array def /fscale 1.0 def /kY 0 def gsave dup 1 add copy dup
+	1 0 dtransform exch atan rotate {exch dup type /stringtype eq {gsave
+        dup gsave newpath 0 0 moveto true charpath flattenpath pathbbox pop
+	exch pop exch pop grestore currentpoint pop add twidth
+	ge {grestore CR exch 1 add dup 2 add {CR} exch 1 roll exch} {grestore}
+	ifelse true charpath flattenpath} {dup type /arraytype eq {exec} {12
+	string cvs true charpath flattenpath} ifelse} ifelse} repeat exch pop
+	pathbbox grestore 3 -1 roll pop 3 1 roll just 1 and 0 gt {just 2 and
+	0 gt {exch pop neg fspc sub} {exch sub 0.5 mul neg} ifelse} {pop neg
+	fspc add} ifelse exch Bline exch just 4 and 0 gt {just 8 and 0 gt
+	{exch pop neg fspc sub} {add 0.5 mul neg} ifelse} {pop neg fspc add}
+	ifelse rotval rotate Kn currentpoint translate /showflag 1 def /Bline
+	0 def /Tabs 0 array def /fscale 1.0 def /kY 0 def {dup type
+	/stringtype eq {mshow} {dup type /arraytype eq {exec} {12 string cvs
+	mshow} ifelse} ifelse} repeat grestore endclip} def
+/pinlabel { 4 index 32 and 0 ne hlevel 0 eq or { /pspc 10 def label
+	/pspc 0 def } { pop pop pop pop pop {pop} repeat } ifelse } def
+/pinglobal { pinlabel } def
+/infolabel { pinlabel } def
+/graphic { gsave 4 index cvx exec /DataSource get resetfile translate 0 0
+	moveto neg rotate dup scale cvx exec image grestore endclip} def
+
+/scb { setrgbcolor } bind def  /sce { defColor aload pop scb } bind def
+/cRedef {/defColor currentcolor 3 array astore def} def
+/begingate {dup type /dicttype ne {1 dict} if begin	% default params
+	dup type /dicttype ne {1 dict} if begin		% instanced params
+	/hlevel hlevel 1 add def /defColor currentcolor sce 3 array astore
+	def gsave sce translate 0 0 moveto neg rotate dup type /nametype
+	eq not { dup abs currentlinewidth exch div setlinewidth } { pop }
+	ifelse dup abs scale clipped 1 and 1 eq {/clipped clipped 1 add def}
+	if} bind def
+/endgate { /hlevel hlevel 1 sub def grestore defColor aload pop cRedef
+	scb end end endclip} bind def
+
+/hlevel 0 def
+/endclip {clipped 1 and 1 eq {grestore /clipped clipped 1 sub def} if} def
+/tmpa [1 0 0 1 0 0] def
+/gar {8 8 true tmpa {<c0 c0 00 00 0c 0c 00 00>} imagemask} bind
+{8 8 true tmpa {<30 70 60 02 03 07 06 20>} imagemask} bind
+{8 8 true tmpa {<0c 1e 1e 0c c0 e1 e1 c0>} imagemask} bind
+{8 8 true tmpa {<0f 0f 0f 0f f0 f0 f0 f0>} imagemask} bind
+{8 8 true tmpa {<3f f3 e1 e1 f3 3f 1e 1e>} imagemask} bind
+{8 8 true tmpa {<df cf 8f 9f fd fc f8 f9>} imagemask} bind
+{8 8 true tmpa {<ff 3f 3f ff ff f3 f3 ff>} imagemask} bind 7 array astore def
+/ppaint { gsave clip tmpa dup setmatrix pathbbox neg exch neg 4 2 roll
+  neg 4 -1 roll 2 copy gt {exch} if 8 div ceiling 8 mul 4 2 roll neg 2 copy
+  gt {exch} if 8 div ceiling 8 mul 3 -1 roll -8 5 -1 roll
+  { 3 index exch 5 exch put dup -8 3 index { 3 index
+  exch 4 exch put 3 index exec } for } for pop pop pop pop grestore } bind def
+/setstyles {
+  currentlinewidth mul setlinewidth /style exch def style 2048 and 0 gt
+  clipped 1 and 0 eq and {clip newpath /clipped clipped 1 add def} {
+  style 1 and 0 gt not {closepath} if
+  style 1024 and 0 gt {2 setlinecap 0 setlinejoin} if
+  style 2 and 0 gt {currentlinewidth 4 mul dup 2 array astore 0 setdash} if
+  style 4 and 0 gt {0.5 currentlinewidth 4 mul 2 array astore 0 setdash} if
+  gsave style 16 and 0 gt { style 224 and -5 bitshift style 256 and 0 gt {
+  7 exch sub 8 div dup 1 exch sub currentrgbcolor 3 array astore
+  {3 copy mul add 4 1 roll pop} forall pop pop setrgbcolor eofill}
+  {dup 7 lt {gar exch get ppaint} {pop eofill} ifelse} ifelse}
+  {style 256 and 0 gt {1 setgray eofill} if} ifelse grestore style 8 and 0 gt 
+  style 512 eq or {newpath} {stroke} ifelse grestore endclip} ifelse} def     
+
+/addtoy {exch dup dup 2 mul 3 add 1 roll -1 1 { 4 1 roll dup 4 1 roll add
+	4 -1 roll 2 mul 1 add index 2 mul 2 add 2 roll} for pop} def
+/addtoy1 {1 exch addtoy pop} def
+/addtoy3 {3 exch addtoy pop} def
+/addtoy4 {4 exch addtoy pop} def
+/addtox {exch dup dup 2 mul 3 add 1 roll -1 1 { 4 1 roll dup 4 1 roll 3 -1 roll
+	add exch 4 -1 roll 2 mul 1 add index 2 mul 2 add 2 roll} for pop} def
+/addtox1 {1 exch addtox pop} def
+/addtox3 {3 exch addtox pop} def
+/addtox4 {4 exch addtox pop} def
+/polygon { gsave /num exch def moveto num 1 sub {lineto} repeat setstyles } def
+/xcarc   { gsave newpath arc setstyles } def
+/elb { matrix currentmatrix 7 -1 roll 7 -1 roll translate 5 1 roll 4 -1 roll
+	3 index div 1 scale } def
+/ele { 0 4 1 roll 0 4 1 roll } bind def
+/ellipse { gsave elb newpath ele arc setmatrix setstyles } def
+/pellip  { elb ele arc setmatrix } def
+/nellip  { elb ele arcn setmatrix } def
+/spline  { gsave moveto curveto setstyles } def
+/polyc   { {lineto} repeat } bind def
+/beginpath { gsave moveto } bind def
+/endpath { setstyles } bind def
+/bop	 { 1 setlinecap 2 setlinejoin 6 setmiterlimit 0 0 0 scb cRedef
+	/clipped 0 def} def
+/psinsertion {/PSobj save def /showpage {} def /setpagedevice {pop} def bop
+	rotate translate dup scale} def
+/end_insert {PSobj restore} def
+/setpagemat {/pagemat matrix currentmatrix def} def
+/inchscale  {setpagemat 0.375 mul dup scale} def
+/cmscale    {setpagemat 0.35433071 mul dup scale} def
+
+%%EndResource
+%%EndProlog
+
+% XCircuit output starts here.
+
+%%BeginSetup
+
+
+%%EndSetup
+
+%%Page: 1 1
+%%PageOrientation: Portrait
+/pgsave save def bop
+1.0000 inchscale
+2.6000 setlinewidth 30704 320 translate
+
+0 1.000 -864 768 -864 672 -768 672 -768 768 4 polygon
+0 1.000 -768 768 -768 672 -672 672 -672 768 4 polygon
+0 1.000 -672 768 -672 672 -576 672 -576 768 4 polygon
+0 1.000 -576 768 -576 672 -480 672 -480 768 4 polygon
+0 1.000 -480 768 -480 672 -384 672 -384 768 4 polygon
+0 1.000 -384 768 -384 672 -288 672 -288 768 4 polygon
+0 1.000 -288 768 -288 672 -192 672 -192 768 4 polygon
+0 1.000 -192 768 -192 672 -96 672 -96 768 4 polygon
+0 1.000 -96 768 -96 672 0 672 0 768 4 polygon
+0 1.000 0 768 0 672 96 672 96 768 4 polygon
+0 1.000 96 768 96 672 192 672 192 768 4 polygon
+0 1.000 192 768 192 672 288 672 288 768 4 polygon
+0 1.000 288 768 288 672 384 672 384 768 4 polygon
+0 1.000 384 768 384 672 480 672 480 768 4 polygon
+0 1.000 480 768 480 672 576 672 576 768 4 polygon
+0 1.000 576 768 576 672 672 672 672 768 4 polygon
+0 1.000 672 768 672 672 768 672 768 768 4 polygon
+1 1.000 -800 -96 32 270.000 360.000 xcarc
+1 1.000 -768 -96 -768 -64 2 polygon
+1 1.000 -800 -32 -832 -32 2 polygon
+1 1.000 -864 -64 -864 -96 2 polygon
+1 1.000 -832 -128 -800 -128 2 polygon
+1 1.000 -30480 528 32 180.000 270.000 xcarc
+1 1.000 -30368 512 32 180.000 270.000 xcarc
+1 1.000 -832 -64 32 90.000 180.000 xcarc
+1 1.000 -800 -64 32 0.000 90.000 xcarc
+1 1.000 -832 -96 32 180.000 270.000 xcarc
+496 1.000 -736 576 -736 544 -704 544 -704 576 4 polygon
+496 1.000 -544 576 -544 544 -512 544 -512 576 4 polygon
+496 1.000 -352 576 -352 544 -320 544 -320 576 4 polygon
+496 1.000 -160 576 -160 544 -128 544 -128 576 4 polygon
+496 1.000 32 576 32 544 64 544 64 576 4 polygon
+496 1.000 224 576 224 544 256 544 256 576 4 polygon
+496 1.000 416 576 416 544 448 544 448 576 4 polygon
+496 1.000 608 576 608 544 640 544 640 576 4 polygon
+1 1.000 -720 576 -720 672 2 polygon
+1 1.000 -704 576 -624 656 2 polygon
+1 1.000 -528 576 -528 672 2 polygon
+1 1.000 -512 576 -432 656 2 polygon
+1 1.000 -336 576 -336 672 2 polygon
+1 1.000 -144 576 -144 672 2 polygon
+1 1.000 48 576 48 672 2 polygon
+1 1.000 240 576 240 672 2 polygon
+1 1.000 432 576 432 672 2 polygon
+1 1.000 624 576 624 672 2 polygon
+1 1.000 -320 576 -240 656 2 polygon
+1 1.000 -128 576 -48 656 2 polygon
+1 1.000 64 576 144 656 2 polygon
+1 1.000 256 576 336 656 2 polygon
+1 1.000 448 576 528 656 2 polygon
+1 1.000 640 576 720 656 2 polygon
+1 1.000 608 480 544 416 2 polygon
+0.800 0.800 0.800 scb
+496 1.000 512 416 512 384 544 384 544 416 4 polygon
+sce
+1 1.000 528 416 528 672 2 polygon
+496 1.000 416 416 416 384 448 384 448 416 4 polygon
+496 1.000 32 416 32 384 64 384 64 416 4 polygon
+496 1.000 128 416 128 384 160 384 160 416 4 polygon
+496 1.000 -256 416 -256 384 -224 384 -224 416 4 polygon
+496 1.000 -352 416 -352 384 -320 384 -320 416 4 polygon
+496 1.000 -640 416 -640 384 -608 384 -608 416 4 polygon
+496 1.000 -736 416 -736 384 -704 384 -704 416 4 polygon
+1 1.000 432 416 432 544 2 polygon
+1 1.000 144 416 144 672 2 polygon
+1 1.000 48 416 48 544 2 polygon
+1 1.000 448 416 512 480 624 480 3 polygon
+1 1.000 64 416 128 480 240 480 3 polygon
+1 1.000 224 480 160 416 2 polygon
+1 1.000 -320 416 -256 480 -144 480 3 polygon
+1 1.000 -160 480 -224 416 2 polygon
+1 1.000 -704 416 -640 480 -528 480 3 polygon
+1 1.000 -544 480 -608 416 2 polygon
+1 1.000 -240 416 -240 672 2 polygon
+1 1.000 -336 416 -336 544 2 polygon
+1 1.000 -624 416 -624 672 2 polygon
+1 1.000 -720 416 -720 544 2 polygon
+0.800 0.800 0.800 scb
+496 1.000 320 256 320 224 352 224 352 256 4 polygon
+496 1.000 224 256 224 224 256 224 256 256 4 polygon
+496 1.000 128 256 128 224 160 224 160 256 4 polygon
+sce
+496 1.000 32 256 32 224 64 224 64 256 4 polygon
+496 1.000 -736 256 -736 224 -704 224 -704 256 4 polygon
+496 1.000 -640 256 -640 224 -608 224 -608 256 4 polygon
+496 1.000 -544 256 -544 224 -512 224 -512 256 4 polygon
+496 1.000 -448 256 -448 224 -416 224 -416 256 4 polygon
+1 1.000 336 672 336 256 2 polygon
+1 1.000 240 544 240 256 2 polygon
+1 1.000 144 384 144 256 2 polygon
+1 1.000 48 384 48 256 2 polygon
+1 1.000 -432 672 -432 256 2 polygon
+1 1.000 -528 544 -528 256 2 polygon
+1 1.000 -624 384 -624 256 2 polygon
+1 1.000 -720 384 -720 256 2 polygon
+1 1.000 352 256 416 320 2 polygon
+1 1.000 256 256 320 320 2 polygon
+1 1.000 160 256 224 320 2 polygon
+1 1.000 64 256 128 320 432 320 3 polygon
+1 1.000 -416 256 -352 320 2 polygon
+1 1.000 -512 256 -448 320 2 polygon
+1 1.000 -608 256 -544 320 2 polygon
+1 1.000 -704 256 -640 320 -336 320 3 polygon
+0.800 0.800 0.800 scb
+496 1.000 -64 96 -64 64 -32 64 -32 96 4 polygon
+496 1.000 -160 96 -160 64 -128 64 -128 96 4 polygon
+496 1.000 -256 96 -256 64 -224 64 -224 96 4 polygon
+496 1.000 -352 96 -352 64 -320 64 -320 96 4 polygon
+496 1.000 -448 96 -448 64 -416 64 -416 96 4 polygon
+496 1.000 -544 96 -544 64 -512 64 -512 96 4 polygon
+496 1.000 -640 96 -640 64 -608 64 -608 96 4 polygon
+496 1.000 -736 96 -736 64 -704 64 -704 96 4 polygon
+sce
+1 1.000 -32 96 32 160 2 polygon
+1 1.000 -128 96 -64 160 2 polygon
+1 1.000 -224 96 -160 160 2 polygon
+1 1.000 -320 96 -256 160 2 polygon
+1 1.000 -416 96 -352 160 2 polygon
+1 1.000 -512 96 -448 160 2 polygon
+1 1.000 -608 96 -544 160 2 polygon
+1 1.000 -704 96 -640 160 48 160 3 polygon
+1 1.000 -48 672 -48 96 2 polygon
+1 1.000 -144 544 -144 96 2 polygon
+1 1.000 -240 384 -240 96 2 polygon
+1 1.000 -336 384 -336 96 2 polygon
+1 1.000 -432 224 -432 96 2 polygon
+1 1.000 -528 224 -528 96 2 polygon
+1 1.000 -624 224 -624 96 2 polygon
+1 1.000 -720 224 -720 96 2 polygon
+1 1.000 -720 64 -720 16 -784 -48 3 polygon
+1 1.000 -704 -32 -736 -32 2 polygon
+1 1.000 -736 -64 32 90.000 180.000 xcarc
+1 1.000 -736 -96 32 180.000 270.000 xcarc
+1 1.000 -768 -64 -768 -96 2 polygon
+1 1.000 -736 -128 -704 -128 2 polygon
+1 1.000 -704 -96 32 270.000 360.000 xcarc
+1 1.000 -672 -96 -672 -64 2 polygon
+1 1.000 -624 64 -624 16 -688 -48 3 polygon
+1 1.000 -704 -64 32 0.000 90.000 xcarc
+1 1.000 -608 -32 -640 -32 2 polygon
+1 1.000 -640 -64 32 90.000 180.000 xcarc
+1 1.000 -640 -96 32 180.000 270.000 xcarc
+1 1.000 -672 -64 -672 -96 2 polygon
+1 1.000 -640 -128 -608 -128 2 polygon
+1 1.000 -608 -96 32 270.000 360.000 xcarc
+1 1.000 -576 -96 -576 -64 2 polygon
+1 1.000 -528 64 -528 16 -592 -48 3 polygon
+1 1.000 -608 -64 32 0.000 90.000 xcarc
+1 1.000 -512 -32 -544 -32 2 polygon
+1 1.000 -544 -64 32 90.000 180.000 xcarc
+1 1.000 -544 -96 32 180.000 270.000 xcarc
+1 1.000 -576 -64 -576 -96 2 polygon
+1 1.000 -544 -128 -512 -128 2 polygon
+1 1.000 -512 -96 32 270.000 360.000 xcarc
+1 1.000 -480 -96 -480 -64 2 polygon
+1 1.000 -432 64 -432 16 -496 -48 3 polygon
+1 1.000 -512 -64 32 0.000 90.000 xcarc
+1 1.000 -416 -32 -448 -32 2 polygon
+1 1.000 -448 -64 32 90.000 180.000 xcarc
+1 1.000 -448 -96 32 180.000 270.000 xcarc
+1 1.000 -480 -64 -480 -96 2 polygon
+1 1.000 -448 -128 -416 -128 2 polygon
+1 1.000 -416 -96 32 270.000 360.000 xcarc
+1 1.000 -384 -96 -384 -64 2 polygon
+1 1.000 -336 64 -336 16 -400 -48 3 polygon
+1 1.000 -416 -64 32 0.000 90.000 xcarc
+1 1.000 -320 -32 -352 -32 2 polygon
+1 1.000 -352 -64 32 90.000 180.000 xcarc
+1 1.000 -352 -96 32 180.000 270.000 xcarc
+1 1.000 -384 -64 -384 -96 2 polygon
+1 1.000 -352 -128 -320 -128 2 polygon
+1 1.000 -320 -96 32 270.000 360.000 xcarc
+1 1.000 -288 -96 -288 -64 2 polygon
+1 1.000 -240 64 -240 16 -304 -48 3 polygon
+1 1.000 -320 -64 32 0.000 90.000 xcarc
+1 1.000 -224 -32 -256 -32 2 polygon
+1 1.000 -256 -64 32 90.000 180.000 xcarc
+1 1.000 -256 -96 32 180.000 270.000 xcarc
+1 1.000 -288 -64 -288 -96 2 polygon
+1 1.000 -256 -128 -224 -128 2 polygon
+1 1.000 -224 -96 32 270.000 360.000 xcarc
+1 1.000 -192 -96 -192 -64 2 polygon
+1 1.000 -144 64 -144 16 -208 -48 3 polygon
+1 1.000 -224 -64 32 0.000 90.000 xcarc
+1 1.000 -128 -32 -160 -32 2 polygon
+1 1.000 -160 -64 32 90.000 180.000 xcarc
+1 1.000 -160 -96 32 180.000 270.000 xcarc
+1 1.000 -192 -64 -192 -96 2 polygon
+1 1.000 -160 -128 -128 -128 2 polygon
+1 1.000 -128 -96 32 270.000 360.000 xcarc
+1 1.000 -96 -96 -96 -64 2 polygon
+1 1.000 -48 64 -48 16 -112 -48 3 polygon
+1 1.000 -128 -64 32 0.000 90.000 xcarc
+1 1.000 -64 -64 32 90.000 180.000 xcarc
+1 1.000 -32 -64 32 0.000 90.000 xcarc
+1 1.000 -32 -32 -64 -32 2 polygon
+1 1.000 -64 -96 32 180.000 270.000 xcarc
+1 1.000 -96 -64 -96 -96 2 polygon
+1 1.000 -64 -128 -32 -128 2 polygon
+1 1.000 -32 -96 32 270.000 360.000 xcarc
+1 1.000 32 -64 32 90.000 180.000 xcarc
+1 1.000 64 -64 32 0.000 90.000 xcarc
+1 1.000 64 -32 32 -32 2 polygon
+1 1.000 32 -96 32 180.000 270.000 xcarc
+1 1.000 0 -64 0 -96 2 polygon
+1 1.000 32 -128 64 -128 2 polygon
+1 1.000 64 -96 32 270.000 360.000 xcarc
+1 1.000 128 -64 32 90.000 180.000 xcarc
+1 1.000 160 -64 32 0.000 90.000 xcarc
+1 1.000 160 -32 128 -32 2 polygon
+1 1.000 128 -96 32 180.000 270.000 xcarc
+1 1.000 96 -64 96 -96 2 polygon
+1 1.000 128 -128 160 -128 2 polygon
+1 1.000 160 -96 32 270.000 360.000 xcarc
+1 1.000 224 -64 32 90.000 180.000 xcarc
+1 1.000 256 -64 32 0.000 90.000 xcarc
+1 1.000 256 -32 224 -32 2 polygon
+1 1.000 224 -96 32 180.000 270.000 xcarc
+1 1.000 192 -64 192 -96 2 polygon
+1 1.000 224 -128 256 -128 2 polygon
+1 1.000 256 -96 32 270.000 360.000 xcarc
+1 1.000 320 -64 32 90.000 180.000 xcarc
+1 1.000 352 -64 32 0.000 90.000 xcarc
+1 1.000 352 -32 320 -32 2 polygon
+1 1.000 320 -96 32 180.000 270.000 xcarc
+1 1.000 288 -64 288 -96 2 polygon
+1 1.000 320 -128 352 -128 2 polygon
+1 1.000 352 -96 32 270.000 360.000 xcarc
+1 1.000 416 -64 32 90.000 180.000 xcarc
+1 1.000 448 -64 32 0.000 90.000 xcarc
+1 1.000 448 -32 416 -32 2 polygon
+1 1.000 416 -96 32 180.000 270.000 xcarc
+1 1.000 384 -64 384 -96 2 polygon
+1 1.000 416 -128 448 -128 2 polygon
+1 1.000 448 -96 32 270.000 360.000 xcarc
+1 1.000 512 -64 32 90.000 180.000 xcarc
+1 1.000 544 -64 32 0.000 90.000 xcarc
+1 1.000 544 -32 512 -32 2 polygon
+1 1.000 512 -96 32 180.000 270.000 xcarc
+1 1.000 480 -64 480 -96 2 polygon
+1 1.000 512 -128 544 -128 2 polygon
+1 1.000 544 -96 32 270.000 360.000 xcarc
+1 1.000 608 -64 32 90.000 180.000 xcarc
+1 1.000 640 -64 32 0.000 90.000 xcarc
+1 1.000 640 -32 608 -32 2 polygon
+1 1.000 608 -96 32 180.000 270.000 xcarc
+1 1.000 576 -64 576 -96 2 polygon
+1 1.000 608 -128 640 -128 2 polygon
+1 1.000 640 -96 32 270.000 360.000 xcarc
+1 1.000 672 -64 672 -96 2 polygon
+1 1.000 -16 -48 48 16 48 224 3 polygon
+1 1.000 80 -48 144 16 144 224 3 polygon
+1 1.000 176 -48 240 16 240 224 3 polygon
+1 1.000 272 -48 336 16 336 224 3 polygon
+1 1.000 368 -48 432 16 432 384 3 polygon
+1 1.000 464 -48 528 16 528 384 3 polygon
+1 1.000 560 -48 624 16 624 544 3 polygon
+1 1.000 672 -48 720 16 720 672 3 polygon
+(15) {/Helvetica cf} 2 16 0 1.000 -832 704 label
+(14) {/Helvetica cf} 2 16 0 1.000 -736 704 label
+(13) {/Helvetica cf} 2 16 0 1.000 -640 704 label
+(12) {/Helvetica cf} 2 16 0 1.000 -544 704 label
+(11) {/Helvetica cf} 2 16 0 1.000 -448 704 label
+(10) {/Helvetica cf} 2 16 0 1.000 -352 704 label
+(9) {/Helvetica cf} 2 16 0 1.000 -256 704 label
+(8) {/Helvetica cf} 2 16 0 1.000 -160 704 label
+(7) {/Helvetica cf} 2 16 0 1.000 -64 704 label
+(6) {/Helvetica cf} 2 16 0 1.000 32 704 label
+(5) {/Helvetica cf} 2 16 0 1.000 128 704 label
+(4) {/Helvetica cf} 2 16 0 1.000 224 704 label
+(3) {/Helvetica cf} 2 16 0 1.000 320 704 label
+(2) {/Helvetica cf} 2 16 0 1.000 416 704 label
+(1) {/Helvetica cf} 2 16 0 1.000 512 704 label
+(0) {/Helvetica cf} 2 16 0 1.000 608 704 label
+(-1) {/Helvetica cf} 2 16 0 1.000 704 704 label
+(15) {/Helvetica cf} 2 16 0 1.000 -832 -96 label
+(14) {/Helvetica cf} 2 16 0 1.000 -736 -96 label
+(13) {/Helvetica cf} 2 16 0 1.000 -640 -96 label
+(12) {/Helvetica cf} 2 16 0 1.000 -544 -96 label
+(11) {/Helvetica cf} 2 16 0 1.000 -448 -96 label
+(10) {/Helvetica cf} 2 16 0 1.000 -352 -96 label
+(9) {/Helvetica cf} 2 16 0 1.000 -256 -96 label
+(8) {/Helvetica cf} 2 16 0 1.000 -160 -96 label
+(7) {/Helvetica cf} 2 16 0 1.000 -64 -96 label
+(6) {/Helvetica cf} 2 16 0 1.000 32 -96 label
+(5) {/Helvetica cf} 2 16 0 1.000 128 -96 label
+(4) {/Helvetica cf} 2 16 0 1.000 224 -96 label
+(3) {/Helvetica cf} 2 16 0 1.000 320 -96 label
+(2) {/Helvetica cf} 2 16 0 1.000 416 -96 label
+(1) {/Helvetica cf} 2 16 0 1.000 512 -96 label
+(0) {/Helvetica cf} 2 16 0 1.000 608 -96 label
+pgsave restore showpage
+
+%%Trailer
+XCIRCsave restore
+%%EOF
