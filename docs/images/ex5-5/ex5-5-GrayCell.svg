@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   id="ex5-5-GrayCell" width="100%" height="100%"  viewBox="-6 -6 266 534">
+<desc>
+XCircuit Version 3.8
+File "ex5-5-GrayCell" Page 1
+</desc>
+<g stroke="black">
+<path d="M154,528 A96,96 0 0,0 202,445 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M106,445 A96,96 0 0,0 154,528 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M106,416 A80,80 0 0,0 202,416 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M202,416 L202,445 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M106,416 L106,445 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M154,368 L154,304 250,304 250,368 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M154,368 A48,48 0 0,0 250,368 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M122,432 L122,192 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M186,304 L186,256 26,256 26,192 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M218,304 L218,192 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<g transform="matrix(   1    0   -0    1  26 176)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="-26" y="0">P<tspan dy="9" font-size="26.8">i:k</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 122 176)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="-29" y="0">G<tspan dy="9" font-size="26.8">i:k</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 218 176)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="-42" y="0">G<tspan dy="9" font-size="26.8">k-1:j</tspan></tspan>
+</text></g>
+<path d="M90,0 L90,64 154,64 154,0 z" fill="#cccccc" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#cccccc" />
+<g transform="matrix(   1    0   -0    1 122  96)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="-16" y="0">i:j</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 410 160)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0"></tspan>
+</text></g>
+</g>
+</svg>
