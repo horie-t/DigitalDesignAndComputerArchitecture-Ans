@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   id="ex5-21-SignExtend" width="100%" height="100%"  viewBox="-6 -6 497 201">
+<desc>
+XCircuit Version 3.8
+File "ex5-21-SignExtend" Page 1
+</desc>
+<g stroke="black">
+<path d="M272,26 L272,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M336,26 L336,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M400,26 L400,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M464,26 L464,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M208,90 L208,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M144,90 L144,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M80,90 L80,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M272,90 L16,90 16,154 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<g transform="matrix(   1    0   -0    1 256  26)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">A<tspan dy="9" font-size="26.8">3</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 320  26)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">A<tspan dy="9" font-size="26.8">2</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 384  26)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">A<tspan dy="9" font-size="26.8">1</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 448  26)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">A<tspan dy="9" font-size="26.8">0</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1   0 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y<tspan dy="9" font-size="26.8">7</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1  64 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y<tspan dy="9" font-size="26.8">6</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 128 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y<tspan dy="9" font-size="26.8">5</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 192 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y<tspan dy="9" font-size="26.8">4</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 256 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y<tspan dy="9" font-size="26.8">3</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 320 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y<tspan dy="9" font-size="26.8">2</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 384 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0"><tspan dy="9" font-size="26.8"></tspan><tspan y="0">Y</tspan><tspan dy="9" font-size="26.8">1</tspan></tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 448 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y<tspan dy="9" font-size="26.8">0</tspan></tspan>
+</text></g>
+</g>
+</svg>
