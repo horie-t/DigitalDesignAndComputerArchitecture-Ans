@@ -51,7 +51,7 @@ module FloatAdder(input logic [31:0] a, b,
    /*
     * 結果を出力
     */
-   assign s = {a_sign, s_exp ,sum_sig[22:0]};
+   assign s = {a_sign, s_exp ,s_sig[22:0]};
    
 endmodule // FloatAdder
 
