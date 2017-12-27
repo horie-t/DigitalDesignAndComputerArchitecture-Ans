@@ -4,18 +4,12 @@ module ScanReg4(input logic clk, test,
 		output logic 	   s_out,
 		output logic [3:0] q);
 
-   logic [3:0] r;
-   
    always_ff @(posedge clk)
      begin
-	if (test) r <= {r[2:0], s_in};
-	else r <= d;
+	if (test) q <= {q[2:0], s_in};
+	else q <= d;
      end
 
-   always_comb
-     begin
-	q <= r;
-	s_out <= r[3];
-     end
+   assign s_out = q[3];
 
 endmodule // ScanReg4
