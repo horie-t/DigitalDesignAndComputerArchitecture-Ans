@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   id="ex5-51_RomLogic" width="100%" height="100%"  viewBox="-6 -6 902 1360">
+<desc>
+XCircuit Version 3.8
+File "ex5-51_RomLogic" Page 1
+</desc>
+<g stroke="black">
+<path d="M512,618 L896,618 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,554 L896,554 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,490 L896,490 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,426 L896,426 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,362 L896,362 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,298 L896,298 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,234 L896,234 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,170 L896,170 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,106 L896,106 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,682 L896,682 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,746 L896,746 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,810 L896,810 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,874 L896,874 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,938 L896,938 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,1002 L896,1002 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M512,1066 L896,1066 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M704,74 L704,1322 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M800,74 L800,1322 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M608,74 L608,1322 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<g transform="matrix(   1    0   -0    1 592 1354)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">X</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 688 1354)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Y</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 784 1354)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">Z</tspan>
+</text></g>
+<path d="M512,42 L512,1130 256,1130 256,42 z" fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M256,618 L0,618 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M144,602 L112,634 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<g transform="matrix(   1    0   -0    1 112 586)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">4</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 122)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0000</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 186)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0001</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 250)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0010</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 314)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0011</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 378)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0100</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 442)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0101</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 506)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0110</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 570)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">0111</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 634)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1000</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 698)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1001</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 762)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1010</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 826)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1011</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 890)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1100</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 954)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1101</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 1018)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1110</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 416 1082)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">1111</tspan>
+</text></g>
+<g transform="matrix(   1    0   -0    1 272  26)" fill="#000000" >
+<text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">4:16 Decoder</tspan>
+</text></g>
+<ellipse cx="608" cy="106" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="170" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="234" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="298" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="426" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="1066" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="1002" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="938" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="608" cy="874" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="704" cy="1066" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="704" cy="1002" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="704" cy="938" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="704" cy="874" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="704" cy="554" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="704" cy="426" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="170" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="234" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="298" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="362" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="426" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="490" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="554" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="618" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="682" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="746" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="810" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="874" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="938" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="1002" rx="6" ry="6" fill="#000000" stroke="none" />
+<ellipse cx="800" cy="1066" rx="6" ry="6" fill="#000000" stroke="none" />
+</g>
+</svg>
