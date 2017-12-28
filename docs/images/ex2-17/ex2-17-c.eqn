@@ -1,0 +1,11 @@
+Y &=& ABC + ABD + ABE + ACD + ACE + \overline{(A + D + E)} + \bar{B}\bar{C}D + \bar{B}\bar{C}E + \bar{B}\bar{D}\bar{E} + \bar{C}\bar{D}\bar{E}\\
+&=& ABC + ABD + ABE + ACD + ACE + \bar{A}\bar{D}\bar{E} + \bar{B}\bar{C}D + \bar{B}\bar{C}E + \bar{B}\bar{D}\bar{E} + \bar{C}\bar{D}\bar{E}\\
+&=& A(BC + BD + BE + CD + CE + \bar{B}\bar{C}D + \bar{B}\bar{C}E + \bar{B}\bar{D}\bar{E} + \bar{C}\bar{D}\bar{E}) + \bar{A}\bar{D}\bar{E} + \bar{B}\bar{C}D + \bar{B}\bar{C}E + \bar{B}\bar{D}\bar{E} + \bar{C}\bar{D}\bar{E}\\
+&=& A + \bar{A}\bar{D}\bar{E} + \bar{B}\bar{C}D + \bar{B}\bar{C}E + \bar{B}\bar{D}\bar{E} + \bar{C}\bar{D}\bar{E}\\
+&=& A + A\bar{D}\bar{E} + \bar{A}\bar{D}\bar{E} + \bar{B}\bar{C}D + \bar{B}\bar{C}E + \bar{B}\bar{D}\bar{E} + \bar{C}\bar{D}\bar{E}\\
+&=& A + \bar{D}\bar{E} + \bar{B}\bar{C}D + \bar{B}\bar{C}E + \bar{B}\bar{D}\bar{E} + \bar{C}\bar{D}\bar{E}\\
+&=& A + \bar{D}\bar{E}(1 + \bar{B} + \bar{C}) + \bar{B}\bar{C}D + \bar{B}\bar{C}E\\
+&=& A + \bar{D}\bar{E} + \bar{B}\bar{C}D + \bar{B}\bar{C}E\\
+&=& A + \bar{D}\bar{E} + \bar{B}\bar{C}\bar{D}\bar{E} + \bar{B}\bar{C}D + \bar{B}\bar{C}E\\
+&=& A + \bar{D}\bar{E} + \bar{B}\bar{C}(\bar{D}\bar{E} + D + E)\\
+&=& A + \bar{D}\bar{E} + \bar{B}\bar{C}
