@@ -22,7 +22,7 @@ File "ex7-3-a_ALU.ps" Page 1
 <g transform="matrix(   1    0   -0    1 176 954)" fill="#000000" >
 <text stroke="none" font-family="Helvetica" font-size="40" ><tspan x="0" y="0">4</tspan>
 </text></g>
-<path d="M144,922 L752,922 736,986 160,986 144,922 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
+<path d="M144,922 L768,922 736,986 160,986 144,922 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
 <path d="M304,794 L336,794 352,858 304,858 304,794 " fill="none" stroke-width="2" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
 <path d="M320,922 L320,858 " fill="none" stroke-width="6" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
 <path d="M448,922 L448,730 " fill="none" stroke-width="6" stroke-linejoin="bevel" stroke-linecap="round" stroke="#000000" />
