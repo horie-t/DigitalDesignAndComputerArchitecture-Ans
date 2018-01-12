@@ -18,7 +18,7 @@ module MainController
    output logic [1:0] aluOp);	  // ALUデコーダの制御
 
    typedef enum       logic [3:0] {S0Fetch, S1Decode, S2MemAddr, S3MemRead, S4MemWriteback,
-				   S5MemWrite} state_t;
+				   S5MemWrite, S6Execute, S7ALUWriteback, S8Branch} state_t;
    parameter OPlw = 6'b100011;	// lw命令
    parameter OPRtype = 6'b000000; // R形式命令
    parameter OPsw = 6'b101011;	  // sw命令
@@ -37,6 +37,10 @@ module MainController
 	 S1Decode:
 	   if (opField == OPlw | opField == OPsw)
 	     opState <= S2MemAddr;
+	   else if (opField == OPRtype)
+	     opState <= S6Execute;
+	   else if (opField == OPbeq)
+	     opState <= S8Branch;
 	 S2MemAddr:
 	   if (opField == OPlw)
 	     opState <= S3MemRead;
@@ -47,6 +51,12 @@ module MainController
 	 S4MemWriteback:
 	   opState <= S0Fetch;
 	 S5MemWrite:
+	   opState <= S0Fetch;
+	 S6Execute:
+	   opState <= S7ALUWriteback;
+	 S7ALUWriteback:
+	   opState <= S0Fetch;
+	 S8Branch:
 	   opState <= S0Fetch;
 	 default:
 	   opState <= S0Fetch;
@@ -140,6 +150,51 @@ module MainController
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
+	 end
+       S6Execute:
+	 begin
+	    instrOrDataAddress = 1'b0;
+	    memoryWriteEnable = 1'b0;
+	    aluSrcASel = 1'b1;
+	    aluSrcBSel = 2'b00;
+	    aluOp = 2'b10;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
+	 end
+       S7ALUWriteback:
+	 begin
+	    instrOrDataAddress = 1'b0;
+	    memoryWriteEnable = 1'b0;
+	    aluSrcASel = 1'b0;
+	    aluSrcBSel = 2'b00;
+	    aluOp = 2'b00;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b1;
+	    regDstFieldSel = 1'b1;
+	    memToRegSel = 1'b0;
+	 end
+       S8Branch:
+	 begin
+	    instrOrDataAddress = 1'b0;
+	    memoryWriteEnable = 1'b0;
+	    aluSrcASel = 1'b1;
+	    aluSrcBSel = 2'b00;
+	    aluOp = 2'b01;
+	    pcSrcSel = 1'b1;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b1;
 	    regFileWriteEnable = 1'b0;
 	    regDstFieldSel = 1'b0;
 	    memToRegSel = 1'b0;
