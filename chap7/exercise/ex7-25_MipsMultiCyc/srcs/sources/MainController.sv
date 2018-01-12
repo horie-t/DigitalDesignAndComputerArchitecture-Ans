@@ -17,7 +17,14 @@ module MainController
    output logic [1:0] aluSrcBSel, // ALUのソースB(00: , 01: 4, 10: 命令即値, 11: )
    output logic [1:0] aluOp);	  // ALUデコーダの制御
 
-   typedef enum       logic [3:0] {S0Fetch, S1Decode, S2MemAddr, S3MemRead, S4MemWriteback} state_t;
+   typedef enum       logic [3:0] {S0Fetch, S1Decode, S2MemAddr, S3MemRead, S4MemWriteback,
+				   S5MemWrite} state_t;
+   parameter OPlw = 6'b100011;	// lw命令
+   parameter OPRtype = 6'b000000; // R形式命令
+   parameter OPsw = 6'b101011;	  // sw命令
+   parameter OPbeq = 6'b000100;	  // beq命令
+   parameter OPaddi = 6'b001000; // addi命令
+   parameter OPj = 6'b000010; // J命令
 
    state_t opState;
 
@@ -27,13 +34,19 @@ module MainController
        case (opState)
 	 S0Fetch: 
 	   opState <= S1Decode;
-	 S1Decode: 
-	   opState <= S2MemAddr;
+	 S1Decode:
+	   if (opField == OPlw | opField == OPsw)
+	     opState <= S2MemAddr;
 	 S2MemAddr:
-	   opState <= S3MemRead;
+	   if (opField == OPlw)
+	     opState <= S3MemRead;
+	   else if (opField == OPsw)
+	     opState <= S5MemWrite;
 	 S3MemRead:
 	   opState <= S4MemWriteback;
 	 S4MemWriteback:
+	   opState <= S0Fetch;
+	 S5MemWrite:
 	   opState <= S0Fetch;
 	 default:
 	   opState <= S0Fetch;
@@ -48,13 +61,13 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 0;
-	    instrReadEnable = 1;
-	    programCounterWrite = 1;
-	    branchInstr = 0;
-	    regFileWriteEnable = 0;
-	    regDstFieldSel = 0;
-	    memToRegSel = 0;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b1;
+	    programCounterWrite = 1'b1;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
 	 end
        S1Decode:
 	 begin
@@ -63,13 +76,13 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 0;
-	    instrReadEnable = 0;
-	    programCounterWrite = 0;
-	    branchInstr = 0;
-	    regFileWriteEnable = 0;
-	    regDstFieldSel = 0;
-	    memToRegSel = 0;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
 	 end
        S2MemAddr:
 	 begin
@@ -78,13 +91,13 @@ module MainController
 	    aluSrcASel = 1'b1;
 	    aluSrcBSel = 2'b10;
 	    aluOp = 2'b00;
-	    pcSrcSel = 0;
-	    instrReadEnable = 0;
-	    programCounterWrite = 0;
-	    branchInstr = 0;
-	    regFileWriteEnable = 0;
-	    regDstFieldSel = 0;
-	    memToRegSel = 0;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
 	 end
        S3MemRead:
 	 begin
@@ -93,14 +106,14 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 0;
-	    instrReadEnable = 0;
-	    programCounterWrite = 0;
-	    branchInstr = 0;
-	    regFileWriteEnable = 1;
-	    regDstFieldSel = 0;
-	    memToRegSel = 0;
-	 end // case: S3MemRead
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b1;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
+	 end
        S4MemWriteback:
 	 begin
 	    instrOrDataAddress = 1'b0;
@@ -108,13 +121,28 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 0;
-	    instrReadEnable = 0;
-	    programCounterWrite = 0;
-	    branchInstr = 0;
-	    regFileWriteEnable = 1;
-	    regDstFieldSel = 0;
-	    memToRegSel = 1;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b1;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b1;
+	 end
+       S5MemWrite:
+	 begin
+	    instrOrDataAddress = 1'b1;
+	    memoryWriteEnable = 1'b1;
+	    aluSrcASel = 1'b0;
+	    aluSrcBSel = 2'b00;
+	    aluOp = 2'b00;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
 	 end
        default:
 	 begin
@@ -123,13 +151,13 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 0;
-	    instrReadEnable = 0;
-	    programCounterWrite = 0;
-	    branchInstr = 0;
-	    regFileWriteEnable = 0;
-	    regDstFieldSel = 0;
-	    memToRegSel = 0;
+	    pcSrcSel = 1'b0;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b0;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
 	 end
      endcase // case (opState)
    
