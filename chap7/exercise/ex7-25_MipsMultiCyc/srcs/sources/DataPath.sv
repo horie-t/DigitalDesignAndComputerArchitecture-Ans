@@ -4,18 +4,19 @@
 module DataPath
   (input logic clk, reset, 	// クロック、リセット
    input logic 	       programCounterWriteEnable, // プログラム・カウンタ書き込みイネーブル
-   input logic 	       branchInstr, // ブランチ命令
    output logic [31:0] memoryAddress, // メモリアドレス
    input logic 	       instrOrDataAddress, // memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
    input logic 	       instrReadEnable, // 命令読み込みイネーブル(イネーブル時にreadDataが命令として扱われる)
    input logic [31:0]  readData, // メモリ読み込み値
    output logic [31:0] writeData, // メモリ書き込み値
+   output logic [5:0]  opField, functField, // 命令のopフィールド、functフィールド
    input logic 	       regFileWriteEnable, //レジスタ・ファイル書き込みイネーブル
    input logic 	       regDstFieldSel, // 宛先レジスタのフィールドがrtかrdか(1の時rd)
    input logic 	       memToRegSel, // メモリからレジスタへの書き込みかどうか(0の時はR形式の結果書き込み)
    input logic 	       aluSrcASel, // ALUのソースAがレジスタrsかPCか(1の時レジスタrs)
    input logic [1:0]   aluSrcBSel, // ALUのソースB(00: , 01: 4, 10: 命令即値, 11: )
-   input logic [2:0]   aluControl);    // ALU制御
+   input logic [2:0]   aluControl, // ALU制御
+   output logic        aluResultZero);	   // ALU結果ゼロ
 
    logic [31:0] pc, pcNext; // プログラム・カウンタ値(PC), 次のPC
    logic [31:0] instr, memoryLoadData;		    // 命令値、メモリ・ロード・データ
@@ -30,9 +31,7 @@ module DataPath
 
    // プログラム・カウンタ
    Mux2 #(32) pcSrcMux(aluOut, aluResult, pcSrcSel, pcNext);
-   FlopEnable #(32) programCounterReg(clk, reset, 
-				      programCounterWriteEnable | branchInstr & aluResultZero, 
-				      pcNext, pc);
+   FlopEnable #(32) programCounterReg(clk, reset, programCounterWriteEnable, pcNext, pc);
 
    // メモリ・アクセス
    assign memoryAddress = instrOrDataAddress ? pc : aluOut;
@@ -40,6 +39,9 @@ module DataPath
    FlopReset #(32) memDataReg(clk, reset, readData, memoryLoadData);
 
    // レジスタ・アクセス
+   assign opField = instr[31:26];
+   assign functField = instr[5:0];
+   
    Mux2 #(5) regDstMux(instr[20:16], instr[15:11], regDstFieldSel, regDst);
    Mux2 #(32) memToRegMux(aluOut, memoryLoadData, memToRegSel, regFileData3);
    

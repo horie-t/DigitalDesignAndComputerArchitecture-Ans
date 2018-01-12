@@ -6,8 +6,8 @@ module Mips
    output logic [31:0] memoryAddress, writeData, // メモリ・アドレス、メモリ書き込み値
    output logic memoryWriteEnable,		 // メモリ書き込みイネーブル
    input logic [31:0] readData);		 // メモリ読み込み値
-   
-   logic branchInstr;		    // ブランチ命令
+
+   logic [5:0] opField, functField; // 命令のopフィールド、functフィールド
    logic programCounterWriteEnable;	// プログラム・カウンタの書き込みイネーブル
    logic instrOrDataAddress;		// memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
    logic instrReadEnable;		// 命令読み込みイネーブル
@@ -17,10 +17,13 @@ module Mips
    logic aluSrcASel; // ALUのソースAがレジスタrsかPCか(1の時レジスタrs)
    logic [1:0] aluSrcBSel; // ALUのソースB(00: , 01: 4, 10: 命令即値, 11: )
    logic [2:0] aluControl;	// ALU制御
+   logic       aluResultZero;	// ALU結果ゼロ
 
-   DataPath dp(clk, reset, branchInstr, programCounterWriteEnable, 
+   Controller c(opField, functField, programCounterWriteEnable, instrOrDataAddress, instrReadEnable,
+		regFileWriteEnable, regDstFieldSel, aluSrcASel, aluSrcBSel, aluControl, aluResultZero);
+   DataPath dp(clk, reset, programCounterWriteEnable, 
 	       memoryAddress, instrOrDataAddress, instrReadEnable, readData, writeData,
-	       regFileWriteEnable, regDstFieldSel, memToRegSel,
-	       aluSrcASel, aluSrcBSel, aluControl);
+	       opField, functField, regFileWriteEnable, regDstFieldSel, memToRegSel,
+	       aluSrcASel, aluSrcBSel, aluControl, aluResultZero);
    
 endmodule // Mips
