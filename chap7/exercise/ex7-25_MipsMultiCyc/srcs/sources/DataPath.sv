@@ -3,6 +3,7 @@
  */
 module DataPath
   (input logic clk, reset, 	// クロック、リセット
+   input logic 	       pcSrcSel, // プログラム・カウンタの選択ステージ(1の時、レジスタ書き戻し)
    input logic 	       programCounterWriteEnable, // プログラム・カウンタ書き込みイネーブル
    output logic [31:0] memoryAddress, // メモリアドレス
    input logic 	       instrOrDataAddress, // memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
