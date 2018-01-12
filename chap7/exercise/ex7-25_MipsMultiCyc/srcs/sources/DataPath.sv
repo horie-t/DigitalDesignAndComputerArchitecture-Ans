@@ -8,6 +8,7 @@ module DataPath
    input logic 	       instrOrDataAddress, // memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
    input logic 	       instrReadEnable, // 命令読み込みイネーブル(イネーブル時にreadDataが命令として扱われる)
    input logic [31:0]  readData, // メモリ読み込み値
+   output logic [31:0] writeData, // メモリ書き込み値
    input logic 	       regFileWriteEnable, //レジスタ・ファイル書き込みイネーブル
    input logic 	       aluSrcASel, // ALUのソースAがレジスタrsかPCか(1の時レジスタrs)
    input logic [1:0]   aluSrcBSel, // ALUのソースB(00: , 01: 4, 10: 命令即値, 11: )
@@ -39,6 +40,8 @@ module DataPath
 
    SignExtend se(instr[15:0], instrSignImmediate);
 
+   assign writeData = rfData2;	// TMP
+   
    // 実行
    Mux2 #(32) srcAMux(pc, instrSignImmediate, aluSrcASel, aluSrcA);
    Mux4 #(32) srcBMux(32'b0/* TMP */, 32'd4, instrSignImmediate, 32'b0/* TMP */, aluSrcBSel, aluSrcB);

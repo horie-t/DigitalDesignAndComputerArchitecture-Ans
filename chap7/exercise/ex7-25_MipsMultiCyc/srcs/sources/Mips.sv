@@ -18,7 +18,7 @@ module Mips
    logic       aluResultZero;	// ALU演算結果ゼロ
 
    DataPath dp(clk, reset, programCounterWriteEnable, 
-	       memoryAddress, instrOrDataAddress, instrReadEnable, readData,
+	       memoryAddress, instrOrDataAddress, instrReadEnable, readData, writeData,
 	       regFileWriteEnable,
 	       aluSrcASel, aluSrcBSel, aluControl, aluResultZero);
    
