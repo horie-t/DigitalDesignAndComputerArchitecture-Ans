@@ -12,6 +12,8 @@ module Mips
    logic instrOrDataAddress;		// memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
    logic instrReadEnable;		// 命令読み込みイネーブル
    logic regFileWriteEnable;   // レジスタ・ファイル書き込みイネーブル
+   logic regDstFieldSel; // 宛先レジスタのフィールドがrtかrdか(1の時rd)
+   logic memToRegSel; // メモリからレジスタへの書き込みかどうか(0の時はR形式の結果書き込み)
    logic aluSrcASel; // ALUのソースAがレジスタrsかPCか(1の時レジスタrs)
    logic [1:0] aluSrcBSel; // ALUのソースB(00: , 01: 4, 10: 命令即値, 11: )
    logic [2:0] aluControl;	// ALU制御
@@ -19,7 +21,7 @@ module Mips
 
    DataPath dp(clk, reset, programCounterWriteEnable, 
 	       memoryAddress, instrOrDataAddress, instrReadEnable, readData, writeData,
-	       regFileWriteEnable,
+	       regFileWriteEnable, regDstFieldSel, memToRegSel,
 	       aluSrcASel, aluSrcBSel, aluControl, aluResultZero);
    
 endmodule // Mips
