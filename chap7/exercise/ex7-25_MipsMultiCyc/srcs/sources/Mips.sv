@@ -8,7 +8,7 @@ module Mips
    input logic [31:0] readData);		 // メモリ読み込み値
 
    logic [5:0] opField, functField; // 命令のopフィールド、functフィールド
-   logic       pcSrcSel;	 // プログラム・カウンタの選択ステージ(1の時、レジスタ書き戻し)
+   logic [1:0] pcSrcSel;	 // プログラム・カウンタのセレクタ
    logic       programCounterWriteEnable;	// プログラム・カウンタの書き込みイネーブル
    logic       instrOrDataAddress;		// memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
    logic       instrReadEnable;		// 命令読み込みイネーブル
@@ -21,7 +21,7 @@ module Mips
    logic       aluResultZero;	// ALU結果ゼロ
 
    Controller c(clk, reset, opField, functField, pcSrcSel, programCounterWriteEnable, 
-		instrOrDataAddress, instrReadEnable, memoryWriteEnable,
+		instrOrDataAddress, memoryWriteEnable, instrReadEnable,
 		regFileWriteEnable, regDstFieldSel, memToRegSel, aluSrcASel, aluSrcBSel, aluControl, aluResultZero);
    DataPath dp(clk, reset, pcSrcSel, programCounterWriteEnable, 
 	       memoryAddress, instrOrDataAddress, instrReadEnable, readData, writeData,

@@ -4,7 +4,7 @@
 module MainController
   (input clk, reset,			   // クロック、リセット
    input logic [5:0]  opField, // 命令コード
-   output logic       pcSrcSel, // プログラム・カウンタの選択ステージ(1の時、レジスタ書き戻し)
+   output logic [1:0] pcSrcSel, // プログラム・カウンタのセレクタ
    output logic       programCounterWrite, // プログラム・カウンタ書き込み
    output logic       branchInstr, // ブランチ命令
    output logic       instrOrDataAddress, // memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
@@ -19,7 +19,7 @@ module MainController
 
    typedef enum       logic [3:0] {S0Fetch, S1Decode, S2MemAddr, S3MemRead, S4MemWriteback,
 				   S5MemWrite, S6Execute, S7ALUWriteback, S8Branch, 
-				   S9Addi, S10AddiWriteback} state_t;
+				   S9Addi, S10AddiWriteback, S11Jump} state_t;
    parameter OPlw = 6'b100011;	// lw命令
    parameter OPRtype = 6'b000000; // R形式命令
    parameter OPsw = 6'b101011;	  // sw命令
@@ -44,6 +44,8 @@ module MainController
 	     opState <= S8Branch;
 	   else if (opField == OPaddi)
 	     opState <= S9Addi;
+	   else if (opField == OPj)
+	     opState <= S11Jump;
 	 S2MemAddr:
 	   if (opField == OPlw)
 	     opState <= S3MemRead;
@@ -76,9 +78,9 @@ module MainController
 	    instrOrDataAddress = 1'b0;
 	    memoryWriteEnable = 1'b0;
 	    aluSrcASel = 1'b0;
-	    aluSrcBSel = 2'b00;
+	    aluSrcBSel = 2'b01;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b1;
 	    programCounterWrite = 1'b1;
 	    branchInstr = 1'b0;
@@ -91,9 +93,9 @@ module MainController
 	    instrOrDataAddress = 1'b0;
 	    memoryWriteEnable = 1'b0;
 	    aluSrcASel = 1'b0;
-	    aluSrcBSel = 2'b00;
+	    aluSrcBSel = 2'b11;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -108,7 +110,7 @@ module MainController
 	    aluSrcASel = 1'b1;
 	    aluSrcBSel = 2'b10;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -123,7 +125,7 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -138,7 +140,7 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -153,7 +155,7 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -168,7 +170,7 @@ module MainController
 	    aluSrcASel = 1'b1;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b10;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -183,7 +185,7 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -198,7 +200,7 @@ module MainController
 	    aluSrcASel = 1'b1;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b01;
-	    pcSrcSel = 1'b1;
+	    pcSrcSel = 2'b01;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b1;
@@ -213,7 +215,7 @@ module MainController
 	    aluSrcASel = 1'b1;
 	    aluSrcBSel = 2'b10;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
@@ -228,11 +230,26 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;
 	    regFileWriteEnable = 1'b1;
+	    regDstFieldSel = 1'b0;
+	    memToRegSel = 1'b0;
+	 end
+       S11Jump:
+	 begin
+	    instrOrDataAddress = 1'b0;
+	    memoryWriteEnable = 1'b0;
+	    aluSrcASel = 1'b0;
+	    aluSrcBSel = 2'b00;
+	    aluOp = 2'b00;
+	    pcSrcSel = 2'b10;
+	    instrReadEnable = 1'b0;
+	    programCounterWrite = 1'b1;
+	    branchInstr = 1'b0;
+	    regFileWriteEnable = 1'b0;
 	    regDstFieldSel = 1'b0;
 	    memToRegSel = 1'b0;
 	 end
@@ -243,7 +260,7 @@ module MainController
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
 	    aluOp = 2'b00;
-	    pcSrcSel = 1'b0;
+	    pcSrcSel = 2'b00;
 	    instrReadEnable = 1'b0;
 	    programCounterWrite = 1'b0;
 	    branchInstr = 1'b0;

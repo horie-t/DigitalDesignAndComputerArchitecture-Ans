@@ -3,7 +3,7 @@
  */
 module DataPath
   (input logic clk, reset, 	// クロック、リセット
-   input logic 	       pcSrcSel, // プログラム・カウンタの選択ステージ(1の時、レジスタ書き戻し)
+   input logic [1:0]   pcSrcSel, // プログラム・カウンタのセレクタ(0:ExecステータスのALUResult, 1:Writeback、2: Jampアドレス
    input logic 	       programCounterWriteEnable, // プログラム・カウンタ書き込みイネーブル
    output logic [31:0] memoryAddress, // メモリアドレス
    input logic 	       instrOrDataAddress, // memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
@@ -31,11 +31,11 @@ module DataPath
    logic [31:0] aluResult, aluOut;	    // ALU演算結果、ALU演算結果(メモリ書き込みフェーズ)
 
    // プログラム・カウンタ
-   Mux2 #(32) pcSrcMux(aluOut, aluResult, pcSrcSel, pcNext);
+   Mux3 #(32) pcSrcMux(aluResult, aluOut, {pc[31:28], instr[25:0], 2'b00}, pcSrcSel, pcNext);
    FlopEnable #(32) programCounterReg(clk, reset, programCounterWriteEnable, pcNext, pc);
 
    // メモリ・アクセス
-   assign memoryAddress = instrOrDataAddress ? pc : aluOut;
+   assign memoryAddress = instrOrDataAddress ? aluOut : pc;
    FlopEnable #(32) instrReg(clk, reset, instrReadEnable, readData, instr);
    FlopReset #(32) memDataReg(clk, reset, readData, memoryLoadData);
 
@@ -60,7 +60,7 @@ module DataPath
    // 実行
    Sl2 sl2(instrSignImmediate, instrSignImmediateShift);
    
-   Mux2 #(32) srcAMux(pc, instrSignImmediate, aluSrcASel, aluSrcA);
+   Mux2 #(32) srcAMux(pc, rfData1, aluSrcASel, aluSrcA);
    Mux4 #(32) srcBMux(rfData2, 32'd4, instrSignImmediate, instrSignImmediateShift, aluSrcBSel, aluSrcB);
    
    Alu alu(aluSrcA, aluSrcB, aluControl, aluResult, aluResultZero);

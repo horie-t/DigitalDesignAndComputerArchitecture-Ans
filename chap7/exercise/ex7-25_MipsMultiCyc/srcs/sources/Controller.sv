@@ -4,7 +4,7 @@
 module Controller
   (input logic clk, reset,		   // クロック、リセット
    input logic [5:0]  opField, functField, // 命令コード、ファンクション・コード
-   output logic       pcSrcSel, // プログラム・カウンタの選択ステージ(1の時、レジスタ書き戻し)
+   output logic [1:0] pcSrcSel, // プログラム・カウンタのセレクタ
    output logic       programCounterWriteEnable, // プログラム・カウンタ書き込みイネーブル
    output logic       instrOrDataAddress, // memoryAddressが命令アドレスか、データアドレスか(1の時は命令)
    output logic       memoryWriteEnable,// メモリ書き込みイネーブル 
