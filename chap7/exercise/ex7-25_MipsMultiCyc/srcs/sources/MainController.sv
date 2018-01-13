@@ -11,8 +11,8 @@ module MainController
    output logic       memoryWriteEnable, // メモリ書き込みイネーブル
    output logic       instrReadEnable, // 命令読み込みイネーブル(イネーブル時にreadDataが命令として扱われる)
    output logic       regFileWriteEnable, //レジスタ・ファイル書き込みイネーブル
-   output logic       memToRegSel, // メモリからレジスタへの書き込みかどうか(0の時はR形式の結果書き込み) 
    output logic       regDstFieldSel, // 宛先レジスタのフィールドがrtかrdか(1の時rd)
+   output logic       memToRegSel, // メモリからレジスタへの書き込みかどうか(0の時はR形式の結果書き込み) 
    output logic       aluSrcASel, // ALUのソースAがレジスタrsかPCか(1の時レジスタrs)
    output logic [1:0] aluSrcBSel, // ALUのソースB(00: , 01: 4, 10: 命令即値, 11: )
    output logic [1:0] aluOp);	  // ALUデコーダの制御
@@ -120,7 +120,7 @@ module MainController
 	 end
        S3MemRead:
 	 begin
-	    instrOrDataAddress = 1'b0;
+	    instrOrDataAddress = 1'b1;
 	    memoryWriteEnable = 1'b0;
 	    aluSrcASel = 1'b0;
 	    aluSrcBSel = 2'b00;
