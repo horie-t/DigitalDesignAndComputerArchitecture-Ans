@@ -3,8 +3,8 @@
  */
 module MipsPLTop
   (input logic clk, reset,      // クロック、リセット
-   output logic [31:0] writedata, dataadr, // 書き込みデータ、データアドレス
-   output logic       memwrite);           // 書き込みするかどうか
+   output logic [31:0] writeData, dataAddr, // 書き込みデータ、データアドレス
+   output logic       memWrite);           // 書き込みするかどうか
    
    logic [31:0] pc, instr, readData; // プログラム・カウンタ、命令データ、読み出しデータ
 

@@ -2,7 +2,7 @@ module MainDec
   (input logic [5:0] op,        // 命令opフィールド
    output logic       memToReg, memWrite, // メモリからレジスタへ、メモリ書き込みイネーブル
    output logic       branch, // ブランチ信号、ゼロ以下ブランチ信号
-   output logic [1:0] aluSrc, // ALU srcB選択信号
+   output logic       aluSrc, // ALU srcB選択信号
    output logic       regDst, regWrite, // dstレジスタ選択信号、レジスタ書き込みイネーブル
    output logic [1:0] aluOp);             // ALU命令
 

@@ -6,7 +6,7 @@ module Hazard
    input logic 	      branchD, 
    input logic [4:0]  rsD, rtD,
    output logic       stallD,
-   output logic [1:0] forwardAD, forwardBD, 
+   output logic       forwardAD, forwardBD, 
    input logic 	      memToRegE, regWriteE, 
    input logic [4:0]  rsE, rtE, writeRegE, 
    output logic       flushE,
@@ -55,7 +55,8 @@ module Hazard
 	/*
 	 * 制御ハザード対策(ストール)
 	 */
-	branchStall = branchD & regWriteE & ((writeRegE == rsD) | (writeRegE == rtD));
+	branchStall = branchD & regWriteE & (writeRegE == rsD | writeRegE == rtD)
+	  | branchD & memToRegM & (writeRegM == rsD | writeRegM == rtD);
 	
 	/*
 	 * ハザード・ユニット全体としてのストール

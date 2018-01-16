@@ -9,7 +9,7 @@ module FlopEnable
     output logic [WIDTH - 1:0] q); // 出力
 
    always_ff @(posedge clk)
-     if (reset) q <= 0;
+     if (reset) q <= 32'b0;
      else if (en) q <= d;
 
 endmodule // FlopEnable

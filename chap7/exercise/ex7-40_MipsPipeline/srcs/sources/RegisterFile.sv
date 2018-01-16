@@ -19,7 +19,7 @@ module RegisterFile
    logic [31:0]        regFile[31:0];       // レジスタファイル
 
    always_ff @(posedge clk)
-     if (writeEn3) regFile[writeAddres3] <= writeData3;
+     if (writeEn3) regFile[writeAddr3] <= writeData3;
 
    assign readData1 = (readAddr1 != 0) ? regFile[readAddr1] : 0;
    assign readData2 = (readAddr2 != 0) ? regFile[readAddr2] : 0;

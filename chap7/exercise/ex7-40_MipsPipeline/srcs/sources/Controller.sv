@@ -3,41 +3,36 @@
  */
 module Controller
   (input logic clk, reset,
-   input logic 	equalD,
-   output logic pcSrcD, branchD,
-   output logic regDstE, aluSrcE, 
+   input logic [5:0]  op, funct,
+   input logic 	      equalD,
+   output logic       pcSrcD, branchD,
+   input logic 	      flushE, 
+   output logic       regDstE, aluSrcE, memToRegE, regWriteE,
    output logic [2:0] aluControlE,
-   output logic memWriteM,
-   output logic regWriteW, memToRegW);
+   output logic       memToRegM, memWriteM, regWriteM,
+   output logic       regWriteW, memToRegW);
 
-   logic [1:0] aluOp;
-
-   // デコード・ステージ
+   /* デコード・ステージ */
    logic       memToRegD, memWriteD, aluSrcD, regDstD, regWriteD;
+   logic [1:0] aluOp;
    logic [2:0] aluControlD;
+   /* 実行ステージ */
+   logic       memWriteE;
          
    MainDec mainDec(op, memToRegD, memWriteD, branchD, aluSrcD, regDstD, regWriteD, aluOp);
    AluDec aluDec(funct, aluOp, aluControlD);
-
    assign pcSrcD = branchD & equalD;
    
-   // 実行ステージ
-   logic       regWriteE, memToRegE, memWriteE;
+   FlopReset #(8) exeReg(clk, reset | flushE,
+			{regWriteD, memToRegD, memWriteD, aluControlD, aluSrcD, regDstD},
+			{regWriteE, memToRegE, memWriteE, aluControlE, aluSrcE, regDstE});
    
-   FlopReset exeReg(clk, reset | flushE,
-		    {regWriteD, memToRegD, memWriteD, aluControlD, aluSrcD, regDstD},
-		    {regWriteE, memToRegE, memWriteE, aluControlE, aluSrcE, regDstE});
+   FlopReset #(3) memReg(clk, reset,
+			{regWriteE, memToRegE, memWriteE},
+			{regWriteM, memToRegM, memWriteM});
    
-   // メモリ・アクセス・ステージ
-   logic       regMemWriteM, memToRegM;
+   FlopReset #(2) wbReg(clk, reset,
+		       {regWriteM, memToRegM},
+		       {regWriteW, memToRegW});
    
-   FlopReset memReg(clk, reset,
-		    {regWriteM, memToRegM, memWriteM},
-		    {regWriteM, memToRegM, memWriteM});
-   
-   // レジスタ書き戻しステージ
-   FlopReset wbReg(clk, reset,
-		   {regWriteM, memToRegM},
-		   {regWriteW, memToRegW});
-
 endmodule // Controller
