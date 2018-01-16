@@ -16,6 +16,10 @@ module Hazard
    input logic 	      regWriteW,
    input logic [4:0]  writeRegW);
    
+   logic 	      lwStall;
+   logic 	      branchStall;
+   logic 	      stall;
+   
    always_comb
      begin
 	/*
@@ -40,25 +44,23 @@ module Hazard
 	/*
 	 * データハザード対策(ストール)
 	 */
-	logic lwStall;
 	lwStall = ((rsD == rsE) | (rtD == rtE)) & memToRegE;
 
 	/*
 	 * 制御ハザード対策(フォワーディング)
 	 */
 	forwardAD = ((rsD != 0) | (rsD == writeRegM)) & regWriteM;
-	forwardBD = ((rtD != 0) | (rtD == wiretRegM)) & regWriteM;
+	forwardBD = ((rtD != 0) | (rtD == writeRegM)) & regWriteM;
 
 	/*
 	 * 制御ハザード対策(ストール)
 	 */
-	logic branchStall;
 	branchStall = branchD & regWriteE & ((writeRegE == rsD) | (writeRegE == rtD));
 	
 	/*
 	 * ハザード・ユニット全体としてのストール
 	 */
-	logic stall = lwStall | branchStall;
+	stall = lwStall | branchStall;
 	stallF = stall;
 	stallD = stall;
 	flushE = stall;
