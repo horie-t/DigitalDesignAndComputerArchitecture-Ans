@@ -10,7 +10,7 @@ module Mips
    input logic [31:0] readData);
 
    /* コントローラ出力 */
-   logic branchD, regDstE, aluSrcE, memToRegE, regWriteE, memToRegM, memWriteM, regWriteW, memToRegW;
+   logic jumpOrBranchD, regDstE, aluSrcE, memToRegE, regWriteE, memToRegM, memWriteM, regWriteW, memToRegW;
    logic [1:0] pcSrcD;
    logic [2:0] aluControlE;
 
@@ -23,7 +23,7 @@ module Mips
    logic       forwardAD, forwardBD;
    logic [1:0] forwardAE, forwardBE;
    
-   Controller c(clk, reset, instr[31:26], instr[5:0], equalD, branchD, pcSrcD, 
+   Controller c(clk, reset, instr[31:26], instr[5:0], equalD, pcSrcD, jumpOrBranchD,
 		flushE, regDstE, aluSrcE, memToRegE, regWriteE, aluControlE,
 		memToRegM, memWrite, regWriteM, regWriteW, memToRegW);
 
@@ -33,7 +33,7 @@ module Mips
 	       dataAddr, writeData, readData, writeRegM,
 	       regWriteW, memToRegW, writeRegW);
 
-   Hazard hz(stallF, branchD, rsD, rtD, stallD, forwardAD, forwardBD, 
+   Hazard hz(stallF, jumpOrBranchD, rsD, rtD, stallD, forwardAD, forwardBD, 
 	     memToRegE, regWriteE, rsE, rtE, writeRegE, flushE,forwardAE, forwardBE,
 	     memToRegM, regWriteM, writeRegM, regWriteW, writeRegW);
    

@@ -78,25 +78,25 @@ module Datapath
    /* 
     * デコード・ステージ
     */
-   FlopEnable #(32 * 2 + 4) decReg(clk, reset | pcSrcD, ~stallD, 
+   FlopEnable #(32 * 2 + 4) decReg(clk, (reset | pcSrcD), ~stallD, 
 				   {instrF, pcPlus4F, pcJumpPreF}, 
 				   {instrD, pcPlus4D, pcJumpPreD});
    assign {opcode, rsD, rtD, rdD, shamt,funct} = instrD;
    assign imm = instrD[15:0];
 
-   RegisterFile(~clk, regWriteW, rsD, rtD, writeRegW, resultW, regRsData, regRtData);
+   RegisterFile regFile(~clk, regWriteW, rsD, rtD, writeRegW, resultW, regRsData, regRtData);
    Mux2 #(32) rsMux(regRsData, aluOutM, forwardAD, rsDataD);
    Mux2 #(32) rtMux(regRtData, aluOutM, forwardBD, rtDataD);
    assign equalD = rsDataD == rtDataD;
    
-   SignExtend(imm, signImmD);
+   SignExtend se(imm, signImmD);
    assign pcBranchD = signImmD << 2 + pcPlus4D;
-   assign pcJumpD = {pcJumpPreD, instr[25:0], 2'b00};
+   assign pcJumpD = {pcJumpPreD, instrD[25:0], 2'b00};
    
    /*
     * 実行ステージ
     */
-   FlopReset #(32 * 3 + 5 * 3) exeReg(clk, reset | flushE,
+   FlopReset #(32 * 3 + 5 * 3) exeReg(clk, (reset | flushE),
 				      {rsDataD, rtDataD, rsD, rtD, rdD, signImmD},
 				      {rsDataE, rtDataE, rsE, rtE, rdE, signImmE});
 

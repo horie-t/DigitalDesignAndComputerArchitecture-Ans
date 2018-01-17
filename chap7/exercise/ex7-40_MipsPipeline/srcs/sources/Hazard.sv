@@ -3,7 +3,7 @@
  */
 module Hazard
   (output logic       stallF,
-   input logic 	      branchD, 
+   input logic 	      jumpOrBranchD, 
    input logic [4:0]  rsD, rtD,
    output logic       stallD,
    output logic       forwardAD, forwardBD, 
@@ -55,8 +55,8 @@ module Hazard
 	/*
 	 * 制御ハザード対策(ストール)
 	 */
-	branchStall = branchD & regWriteE & (writeRegE == rsD | writeRegE == rtD)
-	  | branchD & memToRegM & (writeRegM == rsD | writeRegM == rtD);
+	branchStall = jumpOrBranchD & regWriteE & (writeRegE == rsD | writeRegE == rtD)
+	  | jumpOrBranchD & memToRegM & (writeRegM == rsD | writeRegM == rtD);
 	
 	/*
 	 * ハザード・ユニット全体としてのストール
