@@ -10,7 +10,8 @@ module Mips
    input logic [31:0] readData);
 
    /* コントローラ出力 */
-   logic branchD, pcSrcD, regDstE, aluSrcE, memToRegE, regWriteE, memToRegM, memWriteM, regWriteW, memToRegW;
+   logic branchD, regDstE, aluSrcE, memToRegE, regWriteE, memToRegM, memWriteM, regWriteW, memToRegW;
+   logic [1:0] pcSrcD;
    logic [2:0] aluControlE;
 
    /* データ・パス出力 */

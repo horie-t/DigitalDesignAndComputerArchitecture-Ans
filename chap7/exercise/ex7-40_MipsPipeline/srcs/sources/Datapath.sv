@@ -10,7 +10,8 @@ module Datapath
    input logic 	       stallF,
    output logic [31:0] pcF, 
    input logic [31:0]  instrF,
-   input logic 	       stallD, pcSrcD,
+   input logic 	       stallD, 
+   input logic [1:0]   pcSrcD,
    input logic 	       forwardAD, forwardBD,
    output logic        equalD,
    output logic [4:0]  rsD, rtD, // 命令のrs, rt, rdフィールド
@@ -38,9 +39,12 @@ module Datapath
    
    /* フェッチ・ステージ */
    word_t pcPlus4F;	// 1ワード先のプログラム・カウンタ
-   
+   logic [3:0] pcJumpPreF;	// J命令アドレスのPrefix
+      
    /* デコード・ステージ */
    word_t instrD, pcPlus4D;
+   logic [3:0] pcJumpPreD;	// J命令アドレスのPrefix
+   word_t pcJumpD;		// J命令の飛び先アドレス
    logic [5:0] opcode, funct; // 命令のopcodeとfunctフィールド
    logic [4:0] shamt;	            // 命令のshamt
    regNum_t rdD;		    // 命令のrs, rt, rdフィールド
@@ -62,19 +66,21 @@ module Datapath
    /*
     * PCの選択
     */
-   Mux2 #(32) pcSrcMux(pcPlus4F, pcBranchD, pcSrcD, pcNext);
+   Mux3 #(32) pcSrcMux(pcPlus4F, pcBranchD, pcJumpD, pcSrcD, pcNext);
 
    /*
     * フェッチ・ステージ
     */
    FlopEnable #(32) pcReg(clk, reset, ~stallF, pcNext, pcF);
    assign pcPlus4F = pcF + 32'd4;
-   
+   assign pcJumpPreF = pcF[31:28];
+      
    /* 
     * デコード・ステージ
     */
-   FlopEnable #(32 * 2) decReg(clk, reset | pcSrcD, ~stallD, 
-			       {instrF, pcPlus4F}, {instrD, pcPlus4D});
+   FlopEnable #(32 * 2 + 4) decReg(clk, reset | pcSrcD, ~stallD, 
+				   {instrF, pcPlus4F, pcJumpPreF}, 
+				   {instrD, pcPlus4D, pcJumpPreD});
    assign {opcode, rsD, rtD, rdD, shamt,funct} = instrD;
    assign imm = instrD[15:0];
 
@@ -85,7 +91,8 @@ module Datapath
    
    SignExtend(imm, signImmD);
    assign pcBranchD = signImmD << 2 + pcPlus4D;
-
+   assign pcJumpD = {pcJumpPreD, instr[25:0], 2'b00};
+   
    /*
     * 実行ステージ
     */

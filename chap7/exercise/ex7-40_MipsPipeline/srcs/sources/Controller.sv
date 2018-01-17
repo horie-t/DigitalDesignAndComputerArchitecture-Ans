@@ -5,7 +5,8 @@ module Controller
   (input logic clk, reset,
    input logic [5:0]  op, funct,
    input logic 	      equalD,
-   output logic       pcSrcD, branchD,
+   output logic [1:0] pcSrcD,
+   output logic       jumpOrBranchD, 
    input logic 	      flushE, 
    output logic       regDstE, aluSrcE, memToRegE, regWriteE,
    output logic [2:0] aluControlE,
@@ -13,15 +14,24 @@ module Controller
    output logic       regWriteW, memToRegW);
 
    /* デコード・ステージ */
-   logic       memToRegD, memWriteD, aluSrcD, regDstD, regWriteD;
+   logic       memToRegD, memWriteD, jumpD, branchD, aluSrcD, regDstD, regWriteD;
    logic [1:0] aluOp;
    logic [2:0] aluControlD;
    /* 実行ステージ */
    logic       memWriteE;
-         
-   MainDec mainDec(op, memToRegD, memWriteD, branchD, aluSrcD, regDstD, regWriteD, aluOp);
+   
+   MainDec mainDec(op, memToRegD, memWriteD, jumpD, branchD, aluSrcD, regDstD, regWriteD, aluOp);
    AluDec aluDec(funct, aluOp, aluControlD);
-   assign pcSrcD = branchD & equalD;
+
+   assign jumpOrBranchD = jumpD | branchD;
+   
+   always_comb
+     if (jumpD)
+       pcSrcD = 2'b10;
+     else if (branchD & equalD)
+       pcSrcD = 2'b01;
+     else
+       pcSrcD = 2'b00;
    
    FlopReset #(8) exeReg(clk, reset | flushE,
 			{regWriteD, memToRegD, memWriteD, aluControlD, aluSrcD, regDstD},
