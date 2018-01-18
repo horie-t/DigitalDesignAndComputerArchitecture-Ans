@@ -13,6 +13,7 @@ module Datapath
    input logic 	       stallD, 
    input logic [1:0]   pcSrcD,
    input logic 	       forwardAD, forwardBD,
+   output logic [31:0] instrD,
    output logic        equalD,
    output logic [4:0]  rsD, rtD, // 命令のrs, rt, rdフィールド
    input logic 	       flushE, regDstE, aluSrcE,
@@ -42,12 +43,12 @@ module Datapath
    logic [3:0] pcJumpPreF;	// J命令アドレスのPrefix
       
    /* デコード・ステージ */
-   word_t instrD, pcPlus4D;
+   word_t pcPlus4D;
    logic [3:0] pcJumpPreD;	// J命令アドレスのPrefix
    word_t pcJumpD;		// J命令の飛び先アドレス
    logic [5:0] opcode, funct; // 命令のopcodeとfunctフィールド
    logic [4:0] shamt;	            // 命令のshamt
-   regNum_t rdD;		    // 命令のrs, rt, rdフィールド
+   regNum_t rdD;		    // 命令のrdフィールド
    logic [15:0] imm;		    // 命令のImmフィールド
    word_t signImmD, pcBranchD;	    // 符号拡張Imm、分岐アドレス
    word_t regRsData, regRtData;	    // レジスタに保存されているrs, rtの値
@@ -78,10 +79,10 @@ module Datapath
    /* 
     * デコード・ステージ
     */
-   FlopEnable #(32 * 2 + 4) decReg(clk, (reset | pcSrcD), ~stallD, 
+   FlopEnable #(32 * 2 + 4) decReg(clk, (reset | (pcSrcD[1] | pcSrcD[0]) & ~stallD), ~stallD, 
 				   {instrF, pcPlus4F, pcJumpPreF}, 
 				   {instrD, pcPlus4D, pcJumpPreD});
-   assign {opcode, rsD, rtD, rdD, shamt,funct} = instrD;
+   assign {opcode, rsD, rtD, rdD, shamt, funct} = instrD;
    assign imm = instrD[15:0];
 
    RegisterFile regFile(~clk, regWriteW, rsD, rtD, writeRegW, resultW, regRsData, regRtData);
@@ -90,7 +91,7 @@ module Datapath
    assign equalD = rsDataD == rtDataD;
    
    SignExtend se(imm, signImmD);
-   assign pcBranchD = signImmD << 2 + pcPlus4D;
+   assign pcBranchD = (signImmD << 2) + pcPlus4D;
    assign pcJumpD = {pcJumpPreD, instrD[25:0], 2'b00};
    
    /*
@@ -112,7 +113,7 @@ module Datapath
     * メモリ・アクセス・ステージ
     */
    FlopReset #(32 * 2 + 5) memReg(clk, reset,
-				  {aluOutE, srcBE, writeRegE},
+				  {aluOutE, srcBForwardE, writeRegE},
 				  {aluOutM, writeDataM, writeRegM});
 
    /*
@@ -122,6 +123,6 @@ module Datapath
 				 {readDataM, aluOutM, writeRegM},
 				 {readDataW, aluOutW, writeRegW});
 
-   Mux2 #(32) resultMux(readDataW, aluOutW, memToRegW, resultW);
+   Mux2 #(32) resultMux(aluOutW, readDataW, memToRegW, resultW);
    
 endmodule // Datapath

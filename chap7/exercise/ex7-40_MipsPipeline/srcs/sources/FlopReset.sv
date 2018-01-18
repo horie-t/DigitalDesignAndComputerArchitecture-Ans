@@ -7,7 +7,8 @@ module FlopReset
     input logic [WIDTH - 1:0]  d, // 入力
     output logic [WIDTH - 1:0] q); // 出力
 
-   always_ff @(posedge clk, posedge reset)
+//   always_ff @(posedge clk, posedge reset)
+   always_ff @(posedge clk)
      if (reset) q <= 0;
      else q <= d;
    

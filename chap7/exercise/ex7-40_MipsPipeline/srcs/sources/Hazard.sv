@@ -3,7 +3,7 @@
  */
 module Hazard
   (output logic       stallF,
-   input logic 	      jumpOrBranchD, 
+   input logic 	      jumpD, branchD, 
    input logic [4:0]  rsD, rtD,
    output logic       stallD,
    output logic       forwardAD, forwardBD, 
@@ -16,9 +16,9 @@ module Hazard
    input logic 	      regWriteW,
    input logic [4:0]  writeRegW);
    
-   logic 	      lwStall;
-   logic 	      branchStall;
-   logic 	      stall;
+   logic lwStall;
+   logic branchStall;
+   logic stall;
    
    always_comb
      begin
@@ -42,29 +42,29 @@ module Hazard
 	  forwardBE = 2'b00;
 
 	/*
-	 * データハザード対策(ストール)
-	 */
-	lwStall = ((rsD == rsE) | (rtD == rtE)) & memToRegE;
-
-	/*
 	 * 制御ハザード対策(フォワーディング)
 	 */
-	forwardAD = ((rsD != 0) | (rsD == writeRegM)) & regWriteM;
-	forwardBD = ((rtD != 0) | (rtD == writeRegM)) & regWriteM;
-
-	/*
-	 * 制御ハザード対策(ストール)
-	 */
-	branchStall = jumpOrBranchD & regWriteE & (writeRegE == rsD | writeRegE == rtD)
-	  | jumpOrBranchD & memToRegM & (writeRegM == rsD | writeRegM == rtD);
-	
-	/*
-	 * ハザード・ユニット全体としてのストール
-	 */
-	stall = lwStall | branchStall;
-	stallF = stall;
-	stallD = stall;
-	flushE = stall;
+	forwardAD = rsD != 0 & rsD == writeRegM & regWriteM;
+	forwardBD = rtD != 0 & rtD == writeRegM & regWriteM;
      end // always_comb
+
+   /*
+    * データハザード対策(ストール)
+    */
+   assign #1 lwStall = ((rsD == rsE) | (rtD == rtE)) & memToRegE;
+
+   /*
+    * 制御ハザード対策(ストール)
+    */
+   assign #1 branchStall = branchD & regWriteE & (writeRegE == rsD | writeRegE == rtD)
+     | branchD & memToRegM & (writeRegM == rsD | writeRegM == rtD);
+   
+   /*
+    * ハザード・ユニット全体としてのストール
+    */
+   assign #1 stall = lwStall | branchStall;
+   assign #1 stallF = stall;
+   assign #1 stallD = stall;
+   assign #1 flushE = stall | jumpD;
    
 endmodule // Hazard
