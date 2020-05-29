@@ -2,4 +2,4 @@ Y &=& AC + AC + \bar{A}\bar{B}C\\
 &=& AC + AC(B + \bar{B}) + \bar{A}\bar{B}C\\
 &=& (AC + ABC) + (A\bar{B}C + \bar{A}\bar{B}C)\\
 &=& AC(1 + B) + \bar{B}C(A + \bar{A})\\
-&=& AC + BC\\
+&=& AC + \bar{B}C\\
